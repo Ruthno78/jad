@@ -1,0 +1,27 @@
+# === Node / Web ===
+node_modules/
+dist/
+.output/
+.vinxi/
+*.tsbuildinfo
+.env
+.env.local
+
+# === Android ===
+# public/ se sous vre a; l ap kopye/senkronize anndan assets/public
+# pa scripts/sync-android-assets.sh (lokalman ak nan CI). Pa mete l 2 fwa nan git.
+android/app/src/main/assets/public/
+android/local.properties
+android/.gradle/
+android/app/build/
+android/build/
+android/captures/
+android/app/google-services.json
+*.keystore
+*.jks
+
+# === IDE / OS ===
+.idea/
+.vscode/
+*.iml
+.DS_Store

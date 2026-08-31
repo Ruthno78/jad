@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "agent": "Agent",
+    "company": "Compagnie",
+    "superadmin": "Super Admin",
+    "employer": "Employeur",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
+    "lang": "Langue"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "search": "Rechercher",
+    "filter": "Filtre",
+    "add": "Ajouter",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "send": "Envoyer",
+    "print": "Imprimer",
+    "total": "Total",
+    "date": "Date",
+    "amount": "Montant",
+    "status": "Statut",
+    "loading": "Chargement…",
+    "empty": "Rien à afficher.",
+    "yes": "Oui",
+    "no": "Non",
+    "back": "Retour"
+  },
+  "err": {
+    "required": "Ce champ est obligatoire.",
+    "email": "L’e-mail n’est pas valide.",
+    "network": "La connexion a échoué. Réessayez.",
+    "denied": "Vous n’avez pas le droit pour cette action.",
+    "generic": "Une erreur est survenue. Réessayez."
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "forgot": "Mot de passe oublié ?",
+    "signin": "Se connecter"
+  },
+  "ticket": {
+    "title": "Fiche",
+    "new": "Nouvelle fiche",
+    "number": "Boule",
+    "game": "Jeu",
+    "draw": "Tirage",
+    "toPay": "TOTAL À PAYER",
+    "winner": "Gagnant",
+    "loser": "Perdant",
+    "paid": "Payé"
+  },
+  "draw": {
+    "result": "Résultat",
+    "lot1": "1er lot",
+    "lot2": "2e lot",
+    "lot3": "3e lot",
+    "settle": "Clôturer le tirage"
+  },
+  "prime": {
+    "title": "Configuration des primes",
+    "multiplier": "Multiplicateur",
+    "byPosition": "Multiplicateur par position de lot"
+  },
+  "chat": {
+    "title": "Messages",
+    "placeholder": "Écrire un message…",
+    "reply": "Répondre",
+    "react": "Réaction",
+    "hide": "Masquer",
+    "edited": "modifié",
+    "verified": "Compte vérifié",
+    "miniVerified": "Mini Super-Admin — compte vérifié",
+    "empty": "Pas encore de messages.",
+    "contacts": "Contacts"
+  },
+  "report": {
+    "title": "Rapport",
+    "sales": "Ventes",
+    "balance": "Solde",
+    "winners": "Gagnants"
+  },
+  "mg": {
+    "title": "Maryaj GRATIS",
+    "free": "GRATUIT · 0 HTG"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  }
+}

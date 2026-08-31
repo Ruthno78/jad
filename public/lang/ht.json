@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Akèy",
+    "agent": "Ajan",
+    "company": "Konpayi",
+    "superadmin": "Super Admin",
+    "employer": "Employeur",
+    "contact": "Kontak",
+    "legal": "Mansyon legal",
+    "login": "Konekte",
+    "logout": "Dekonekte",
+    "lang": "Lang"
+  },
+  "common": {
+    "save": "Anrejistre",
+    "cancel": "Anile",
+    "close": "Fèmen",
+    "search": "Chèche",
+    "filter": "Filtè",
+    "add": "Ajoute",
+    "edit": "Modifye",
+    "delete": "Efase",
+    "confirm": "Konfime",
+    "send": "Voye",
+    "print": "Enprime",
+    "total": "Total",
+    "date": "Dat",
+    "amount": "Montan",
+    "status": "Estati",
+    "loading": "Ap chaje…",
+    "empty": "Pa gen anyen pou montre.",
+    "yes": "Wi",
+    "no": "Non",
+    "back": "Retounen"
+  },
+  "err": {
+    "required": "Chan sa a obligatwa.",
+    "email": "Imèl la pa valid.",
+    "network": "Koneksyon an echwe. Eseye ankò.",
+    "denied": "Ou pa gen dwa pou aksyon sa a.",
+    "generic": "Yon erè rive. Eseye ankò."
+  },
+  "auth": {
+    "email": "Imèl",
+    "password": "Modpas",
+    "forgot": "Ou bliye modpas ou?",
+    "signin": "Konekte"
+  },
+  "ticket": {
+    "title": "Fich",
+    "new": "Nouvo fich",
+    "number": "Boul",
+    "game": "Jwèt",
+    "draw": "Tiraj",
+    "toPay": "TOTAL À PAYER",
+    "winner": "Gayan",
+    "loser": "Pa gayan",
+    "paid": "Peye"
+  },
+  "draw": {
+    "result": "Rezilta",
+    "lot1": "1ye lo",
+    "lot2": "2yèm lo",
+    "lot3": "3yèm lo",
+    "settle": "Fèmen tiraj la"
+  },
+  "prime": {
+    "title": "Konfigirasyon Prim",
+    "multiplier": "Miltiplikatè",
+    "byPosition": "Miltiplikatè pa pozisyon lo"
+  },
+  "chat": {
+    "title": "Mesaj",
+    "placeholder": "Ekri yon mesaj…",
+    "reply": "Reponn",
+    "react": "Reyaksyon",
+    "hide": "Kache",
+    "edited": "modifye",
+    "verified": "Kont verifye",
+    "miniVerified": "Mini Super-Admin — kont verifye",
+    "empty": "Pa gen mesaj ankò.",
+    "contacts": "Kontak"
+  },
+  "report": {
+    "title": "Rapò",
+    "sales": "Vant",
+    "balance": "Balans",
+    "winners": "Gayan yo"
+  },
+  "mg": {
+    "title": "Maryaj GRATIS",
+    "free": "GRATIS · 0 HTG"
+  },
+  "footer": {
+    "rights": "Tout dwa rezève."
+  }
+}

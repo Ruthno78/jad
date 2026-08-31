@@ -1,0 +1,249 @@
+/* =====================================================================
+ * JADSTACK LOTTO — V45 · MODÈNIZASYON FRONT-END (SAN TOUCHE BACKEND)
+ * ---------------------------------------------------------------------
+ * Fichye sa a CHAJE AN DÈNYE nan chak paj — li pa touche/efase okenn
+ * lòt fichye CSS, li jis pran priyorite sou kèk règ presi pou korije
+ * pwoblèm konkrè yo mande:
+ *   1) Modal/popup: sou mobil (≤680px) li vin yon FÈY PLEN PAJ (estil
+ *      "app" modèn) olye yon ti popup toufounen; sou PC li rete yon
+ *      popup santre men ak yon animasyon dous (scale+fade), pa yon
+ *      "pop" brital.
+ *   2) Paj "Legal": vin gen yon vrè estrikti — navigasyon anlè, kat
+ *      pou chak seksyon, tipografi ki pi respire.
+ *   3) Ti amelyorasyon jeneral (fokis klavye, scrollbar, transisyon
+ *      kat) ki fè sit la santi l pi "fini" san chanje idantite mak la.
+ *   4) Tablo sou mobil: premye kolòn "sticky" + degrade ki montre gen
+ *      plis pou defile — pi fasil pou eskane san chanje markup.
+ *   5) Sib touch (bouton/chan/lyen) ≥44px sou mobil — estanda
+ *      aksesibilite ki fè aplikasyon an "santi l" pi fasil sèvi.
+ *   6) Fòm: fokis pi klè, ritm ant chan pi respire.
+ *   7) Meni: lyen aktif pi vizib, chan rechèch pi rond/modèn.
+ * ===================================================================== */
+
+/* ---------------------------------------------------------------------
+ * 1) MODAL — responsiv + animasyon dous
+ * ------------------------------------------------------------------- */
+.modal-backdrop {
+  background: color-mix(in oklab, #0b1220 60%, transparent);
+  backdrop-filter: blur(3px);
+  animation: v45-fade-in 200ms var(--easing) both;
+}
+.modal-backdrop.closing { animation: v45-fade-out 160ms var(--easing) both; }
+@keyframes v45-fade-in  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes v45-fade-out { from { opacity: 1 } to { opacity: 0 } }
+
+@media (min-width: 681px) {
+  /* PC — popup santre, animasyon dous, pa gen konbla vizyèl */
+  .modal-backdrop .modal,
+  .modal-backdrop .modal-card {
+    animation: v45-pop-in 220ms var(--easing) both;
+    box-shadow: var(--shadow-lg);
+  }
+  @keyframes v45-pop-in {
+    from { opacity: 0; transform: translateY(10px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+@media (max-width: 680px) {
+  /* Mobil/Android — konfigirasyon/detay VIN yon PAJ plen, pa yon popup.
+     Sa reponn dirèkteman ak "lè w antre nan detay, li dwe rann paj". */
+  .modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+    backdrop-filter: none;
+  }
+  .modal-backdrop .modal,
+  .modal-backdrop .modal-card {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    animation: v45-sheet-in 240ms var(--easing) both;
+    padding: max(1rem, env(safe-area-inset-top)) 1.1rem calc(1.1rem + env(safe-area-inset-bottom));
+  }
+  .modal-backdrop.closing .modal,
+  .modal-backdrop.closing .modal-card { animation: v45-sheet-out 180ms var(--easing) both; }
+  @keyframes v45-sheet-in  { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes v45-sheet-out { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
+  /* Bouton "fèmen" vin yon vrè antèt paj (pa yon X flotan nan kwen) */
+  .modal-backdrop .jl13-modal-x {
+    position: sticky; top: 0; align-self: flex-end;
+    background: var(--surface); z-index: 2;
+  }
+  .modal-backdrop .modal h3:first-child,
+  .modal-backdrop .modal-card h3:first-child {
+    padding-right: 2.2rem; /* pa kwaze ak bouton fèmen an */
+  }
+}
+
+/* ---------------------------------------------------------------------
+ * 2) PAJ LEGAL — estrikti + tipografi pi respire
+ * ------------------------------------------------------------------- */
+.legal-doc { padding-bottom: 2rem; }
+.legal-doc > .eyebrow { margin-bottom: .35rem; }
+.legal-doc > .h1 { margin-bottom: 1.6rem; }
+
+/* Navigasyon anlè paj la — lyen rapid pou chak seksyon */
+.legal-doc-nav {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin: 0 0 2rem; padding: 0; list-style: none;
+}
+.legal-doc-nav a {
+  display: inline-flex; align-items: center;
+  padding: .4rem .85rem; border-radius: var(--radius-pill);
+  background: var(--surface-2); color: var(--text);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  border: 1px solid var(--border);
+  transition: background var(--dur) var(--easing), border-color var(--dur) var(--easing);
+}
+.legal-doc-nav a:hover { background: var(--surface); border-color: var(--primary); }
+
+.legal-doc section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.6rem;
+  margin-top: 1.1rem !important;
+  scroll-margin-top: 5.5rem;
+}
+.legal-doc section h2 {
+  display: flex; align-items: center; gap: .55rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .6rem; margin-bottom: .9rem !important;
+}
+.legal-doc section h2::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primary); flex: 0 0 auto;
+}
+.legal-doc section p { max-width: 70ch; }
+
+/* ---------------------------------------------------------------------
+ * 3) Ti amelyorasyon jeneral — fokis, scrollbar, kat, tranzisyon dous
+ * ------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop, .modal-backdrop .modal, .modal-backdrop .modal-card,
+  .modal-backdrop.closing, .modal-backdrop.closing .modal, .modal-backdrop.closing .modal-card {
+    animation: none !important;
+  }
+}
+.card, .stat, .mini-card {
+  transition: box-shadow var(--dur) var(--easing), border-color var(--dur) var(--easing), transform var(--dur) var(--easing);
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border); border-radius: var(--radius-pill); border: 2px solid transparent; background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--muted); background-clip: padding-box; }
+
+/* =====================================================================
+ * PATI 2 — REZ TE PLAN AN (menni, tablo mobil, sib touch, fòm)
+ * ===================================================================== */
+
+/* ---------------------------------------------------------------------
+ * 4) TABLO SOU MOBIL — pi fasil pou navige/li san chanje okenn markup.
+ *    Premye kolòn nan rete vizib (sticky) pandan ou defile orizontal,
+ *    epi yon ti degrade sou bò dwat la montre gen plis pou wè.
+ * ------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .table-wrap {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    background:
+      linear-gradient(var(--surface) 30%, transparent), 
+      linear-gradient(transparent, var(--surface) 70%) 0 100%,
+      linear-gradient(to right, rgba(0,0,0,.10), transparent 12px),
+      linear-gradient(to left, rgba(0,0,0,.10), transparent 12px) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 100% 12px, 100% 12px, 12px 100%, 12px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+  .table th, .table td { padding: .6rem .7rem; font-size: .82rem; }
+  .table th:first-child, .table td:first-child {
+    position: sticky; left: 0; z-index: 1;
+    background: var(--surface); box-shadow: 1px 0 0 var(--border);
+  }
+  .table th:first-child { background: var(--surface-2); }
+}
+
+/* ---------------------------------------------------------------------
+ * 5) SIB TOUCH — bouton/lyen sou mobil dwe fasil pou peze (≥44px),
+ *    yon estanda aksesibilite ki fè sit la "santi l" pi fasil sèvi.
+ * ------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .btn, .btn-icon, .side-link, select, .select, input.input, .table td a, .table td button {
+    min-height: 44px;
+  }
+  .btn-icon { min-width: 44px; }
+  .table th, .table td { min-height: 40px; }
+}
+
+/* ---------------------------------------------------------------------
+ * 6) FÒM — pi bon ritm vizyèl ant chan yo + fokis pi klè, san
+ *    mande okenn nouvo markup (HTML ki egziste deja a sifi).
+ * ------------------------------------------------------------------- */
+.form-row + .form-row { margin-top: .15rem; }
+.input, .select, textarea {
+  transition: border-color var(--dur) var(--easing), box-shadow var(--dur) var(--easing);
+}
+.input:focus, .select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+/* Gwoup chan ki gen yon <hr> ant yo (deja itilize nan plizyè fòm) vin
+   yon vrè separasyon seksyon olye yon senp liy plat. */
+.modal hr, .modal-card hr, .card hr {
+  border: 0; border-top: 1px dashed var(--border);
+  margin: 1.1rem 0; position: relative;
+}
+
+/* ---------------------------------------------------------------------
+ * 7) MENI — pi fasil pou reperaj: gwoup ki ouvè a rete vizyèlman
+ *    "ankre" a mezi ou defile, epi lyen aktif la pi vizib.
+ * ------------------------------------------------------------------- */
+.side-link[aria-current="page"] {
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+.side-search .input { border-radius: var(--radius-pill); }
+
+/* ---------------------------------------------------------------------
+ * 8) ETA VID/ERÈ — mesaj klè + yon senp ikòn si <div class="empty">
+ *    la pa gen youn deja (san bezwen touche okenn fichye JS).
+ * ------------------------------------------------------------------- */
+.empty:not(:has(i)) {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  padding: 2.6rem 1rem;
+}
+.empty:not(:has(i))::before {
+  content: '\f05a'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  font-size: 1.6rem; color: var(--accent); opacity: .55;
+}
+.alert, .error, .banner-error {
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--danger) 35%, var(--border));
+}
+
+/* ---------------------------------------------------------------------
+ * 9) BADGE/KONTRAS — inifòmize gwosè ak lizibilite badge yo kèlkeswa
+ *    paj la, epi ranfòse kontras tèks sou fon "soft" yo (AA).
+ * ------------------------------------------------------------------- */
+.badge {
+  font-size: .72rem; font-weight: 700; letter-spacing: .01em;
+  line-height: 1.3;
+}
+.badge-success { color: color-mix(in oklab, var(--success) 82%, black); }
+.badge-danger  { color: color-mix(in oklab, var(--danger) 82%, black); }
+.badge-warning { color: color-mix(in oklab, var(--warning) 78%, black); }
+

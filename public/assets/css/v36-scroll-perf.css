@@ -1,0 +1,74 @@
+/* =====================================================================
+ * JADSTACK LOTTO V36 — SKWÒL FLUID (pèfòmans)
+ * ---------------------------------------------------------------------
+ * Chaje AN DÈNYE, apre v33/v34/v35, pou li toujou genyen nan kaskad la.
+ *
+ * KOZ REYÈL "tout bagay pase lantman" pandan skwòl la:
+ *  1. `.topbar`/`.nav` fikse (position:fixed) gen `backdrop-filter:
+ *     blur(14–18px)`. Sou telefòn, navigatè a oblije re-kalkile blur
+ *     sa a NAN CHAK FRAME pandan w ap skwole, paske eleman an rete
+ *     "peint" ansanm ak rès paj la — sa fè skwòl la santi l "lou"/anreta.
+ *  2. Menm bagay la pou tèt tablo `sticky` (thead th) ki gen blur.
+ * KOREKSYON: bay eleman fikse/sticky yo YON KOUCH GPU pa yo (transform:
+ * translateZ(0) + will-change:transform) pou navigatè a konpoze yo apa,
+ * epi n diminye distans blur la pou mwens kalkil pou chak frame.
+ * ===================================================================== */
+
+.topbar,
+.nav,
+.sidebar-backdrop,
+.jl34-edge {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Mwens blur = mwens kalkil pa frame, menm rannman vizyèl la rete */
+.topbar,
+.nav {
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+}
+
+/* Tèt tablo "sticky": limite blur la, li vin yon senp fon solid */
+thead th {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: var(--surface-2, #f4f6f8);
+}
+
+/* Modal/tiwa ki gen pwòp skwòl pa yo: menm optimizasyon */
+.modal,
+.v11-pop .v11-pop-card,
+.sidebar,
+.side-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Ankò yon kouch sekirite: paj la pa dwe janm gen yon plafon wotè,
+   e skwòl la toujou fèt pa navigatè a natirèlman (pa pa JS). */
+html, body {
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+}
+
+/* Anpeche "jank" sou eleman ki anime pandan skwòl (kat, bouton, ecran) */
+.card, .feat, .value, .plan, .btn {
+  transform: translateZ(0);
+}
+
+/* Transisyon dous, tankou Lovable: yon sèl kout easing pou tout aplikasyon an,
+   olye chak fichye kreye pwòp vitès pa l. */
+:root { --jl-ease: cubic-bezier(.22, .61, .36, 1); }
+a, button, .btn, .card, .feat, .value, .plan, .nav-lnk, .v30-lang-btn, .v30-lang-menu {
+  transition-timing-function: var(--jl-ease);
+}
+
+/* Respekte itilizatè ki mande mwens mouvman */
+@media (prefers-reduced-motion: reduce) {
+  .topbar, .nav, .sidebar-backdrop, .jl34-edge, .card, .feat, .value, .plan, .btn {
+    will-change: auto;
+  }
+}

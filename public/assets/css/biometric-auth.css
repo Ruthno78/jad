@@ -1,0 +1,5 @@
+/* V80 biometric gate */
+.biometric-status{margin:0 0 .75rem;padding:.7rem .8rem;border-radius:12px;font-size:.86rem;font-weight:600;border:1px solid var(--border,#dbe3ee);background:var(--surface,#fff);}
+.biometric-status[data-kind="pending"]{opacity:.85}
+.biometric-status[data-kind="ok"]{border-color:#79c99b}
+.biometric-status[data-kind="error"]{border-color:#e58a8a;color:var(--danger,#b42318)}

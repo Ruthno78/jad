@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JadStack Lotto</string>
+    <string name="site_url">file:///android_asset/public/auth.html</string>
+    <string name="download_dir">JadStackLotto</string>
+    <string name="download_started">Telechajman kòmanse…</string>
+    <string name="exit_hint">Peze ankò pou soti</string>
+    <string name="perm_needed">Otorizasyon nesesè pou telechaje</string>
+
+    <!-- === Aksyon Rapid === -->
+    <string name="quick_actions_channel_name">Aksyon rapid</string>
+    <string name="quick_actions_channel_desc">Rakousi pèsistan pou aksyon frekan yo</string>
+    <string name="quick_actions_hint">Peze pou aksyon rapid</string>
+</resources>

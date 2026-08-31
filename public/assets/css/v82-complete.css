@@ -1,0 +1,25 @@
+/* JADSTACK LOTTO V82 — mobile POS, history/audit, modal hardening */
+/* V83-FIX — .pos-total (bar "Finaliser & Imprimer") pa DWE defini
+ * `position` ankò isit la: v63-fixes.css se sèl sous verite pou
+ * position/bottom/z-index/background (fixed sou mobil, sticky sou
+ * desktop, ak padding-bottom kalkile an konsekans sou .view).
+ * Le pi bonè, règ sa a te fòse `position:sticky` san media query,
+ * sa ki te kraze fix v63 la e te fè bà a pase SOU lis pari yo. */
+[data-role="agent"] .pos-total{
+  display:flex !important; flex-direction:column !important;
+  align-items:stretch !important; gap:.5rem !important;
+  padding:.7rem .8rem !important;
+}
+[data-role="agent"] .pos-finalize-btn{order:0 !important;width:100% !important;min-height:50px !important;}
+[data-role="agent"] .pos-total-value{order:1 !important;width:100% !important;text-align:center !important;min-height:30px;display:flex;align-items:center;justify-content:center;}
+@media(min-width:960px){
+ [data-role="agent"] .pos-total{flex-direction:row !important;align-items:center !important;}
+ [data-role="agent"] .pos-finalize-btn{width:auto !important;order:1 !important;}
+ [data-role="agent"] .pos-total-value{width:auto !important;order:0 !important;text-align:left !important;justify-content:flex-start;}
+}
+.v82-history-toolbar{display:grid;grid-template-columns:1fr;gap:.55rem;margin-bottom:.8rem}
+.v82-history-toolbar .input,.v82-history-toolbar .select{min-height:42px}
+@media(min-width:720px){.v82-history-toolbar{grid-template-columns:repeat(5,minmax(0,1fr));}}
+.v82-modal-scroll{max-height:min(78vh,720px);overflow:auto;padding-right:.15rem}
+.v82-danger-zone{border:1px solid rgba(220,38,38,.25);border-radius:12px;padding:.8rem;margin-top:.8rem}
+.v82-kpi{font-size:.78rem;color:var(--muted,#64748b)}

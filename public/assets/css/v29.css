@@ -1,0 +1,126 @@
+/* =====================================================================
+ * JADSTACK LOTTO V29
+ *   §B  Seleksyonè lang (header + footer)
+ *   §C  Rafinman UI/UX chat la — bib mesaj, meni aksyon, pikè emoji
+ * ---------------------------------------------------------------------
+ * Se yon kouch FINISYON: li vin APRE v11.css / v26.css, li pa ranplase
+ * yo. Okenn lojik, okenn done, okenn RLS pa touche.
+ * ===================================================================== */
+
+/* ====================== §B — SELEKSYONÈ LANG ======================= */
+.v29-lang {
+  display: inline-flex;
+  gap: .25rem;
+  padding: .18rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--text, #12202b) 8%, transparent);
+  vertical-align: middle;
+}
+.v29-lang-b {
+  display: inline-flex; align-items: center; gap: .3rem;
+  min-height: 32px; padding: .2rem .55rem;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: transparent; color: inherit;
+  font: inherit; font-size: .78rem; font-weight: 600; line-height: 1;
+  transition: background .16s ease, transform .16s ease, color .16s ease;
+}
+.v29-lang-b .fl { font-size: 1rem; }
+.v29-lang-b:hover { background: color-mix(in oklab, var(--text, #12202b) 12%, transparent); }
+.v29-lang-b:active { transform: scale(.96); }
+.v29-lang-b.is-on {
+  background: var(--primary, #0e4c74);
+  color: var(--primary-fg, #fff);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .18);
+}
+footer .v29-lang { margin-top: .8rem; }
+@media (max-width: 720px) {
+  /* Sou mobil nou kenbe kòd lang lan (HT/FR/EN/ES) ansanm ak drapo a:
+     si yon aparèy pa gen font emoji, moun toujou wè ki lang li chwazi. */
+  .v29-lang-b { padding: .2rem .45rem; font-size: .72rem; gap: .22rem; }
+  .v29-lang-b .fl { font-size: .95rem; }}
+
+/* ====================== §C — CHAT: BIB MESAJ ======================= */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Logo konpayi olye inisyal lè branding bay youn */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================== §C — MENI AKSYON (v25-acts) ================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =================== §C — PIKÈ EMOJI (v25-picker) ================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes v29-pop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.38); }
+  100% { transform: scale(1); }
+}
+@keyframes v29-pop-in {
+  from { opacity: 0; transform: translateY(4px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ========================= §C — RESPONSIVE ========================= */
+@media (max-width: 720px) {
+
+
+
+
+
+          /* pa gen tooltip sou touch */
+}
