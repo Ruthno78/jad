@@ -39,3 +39,6 @@ Aucun système V76 de commission n'est chargé par les pages V77.
 Super Admin and Mini Super Admin accounts can be gated by the Android OS
 biometric authenticator. No face image or biometric template is stored by
 the app.
+
+## Dev
+devloper by Ruthno Dev and jadbony 
