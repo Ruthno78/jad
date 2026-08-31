@@ -1,0 +1,245 @@
+/* =====================================================================
+   JADSTACK LOTTO V75 — PREMIUM GLOBAL UI UPDATE
+   Frontend/UI only. No backend, Supabase, API, schema or auth changes.
+   ===================================================================== */
+
+:root{
+  --jl-v75-radius: 22px;
+  --jl-v75-radius-sm: 15px;
+  --jl-v75-glass: color-mix(in oklab, var(--surface, #fff) 92%, transparent);
+  --jl-v75-soft: color-mix(in oklab, var(--primary, #3158c7) 8%, var(--surface, #fff));
+  --jl-v75-line: color-mix(in oklab, var(--border, #e2e6ec) 72%, transparent);
+}
+
+/* ---------- Global polish, same DOM and same functionality ---------- */
+body.jl-appshell .appbar{
+  position:relative;
+  z-index:60;
+  border-bottom:1px solid var(--jl-v75-line);
+  background:
+    radial-gradient(900px 160px at 80% -100%, color-mix(in oklab,var(--primary) 18%,transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab,var(--surface) 97%,transparent), var(--surface));
+  box-shadow:0 8px 28px rgba(15,23,42,.045);
+}
+body.jl-appshell .appbar .left,
+body.jl-appshell .appbar .right{gap:.55rem}
+body.jl-appshell .appbar .badge{
+  border:1px solid color-mix(in oklab,var(--primary) 20%,var(--border));
+  background:var(--jl-v75-soft);
+  color:var(--primary);
+  border-radius:999px;
+  padding:.38rem .72rem;
+  font-size:.68rem;
+  font-weight:750;
+  letter-spacing:.02em;
+}
+body.jl-appshell .appbar .avatar{
+  box-shadow:0 6px 18px color-mix(in oklab,var(--primary) 18%,transparent);
+}
+
+/* Desktop and tablet content gets a coherent premium rhythm */
+body.jl-appshell .view > *{position:relative}
+body.jl-appshell .card,
+body.jl-appshell .panel,
+body.jl-appshell .section-card,
+body.jl-appshell .stat-card{
+  border-radius:var(--jl-v75-radius);
+}
+body.jl-appshell .btn{border-radius:14px}
+body.jl-appshell .input,
+body.jl-appshell input,
+body.jl-appshell select,
+body.jl-appshell textarea{border-radius:14px}
+body.jl-appshell .table-wrap{border-radius:var(--jl-v75-radius);overflow:hidden}
+
+/* ---------- Results zone: the circled upper area ---------- */
+.v11-draws{
+  z-index:50 !important;
+  background:
+    radial-gradient(760px 120px at 72% -90%, color-mix(in oklab,var(--primary,#3158c7) 19%,transparent), transparent 68%),
+    linear-gradient(180deg, color-mix(in oklab,var(--surface,#fff) 98%,transparent), var(--surface,#fff)) !important;
+  border-bottom:1px solid var(--jl-v75-line) !important;
+  box-shadow:0 12px 26px rgba(15,23,42,.055);
+}
+.v11-draws::before{
+  content:"";
+  position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg, transparent 0%, var(--primary,#3158c7) 18%, color-mix(in oklab,var(--primary,#3158c7) 55%,#9b7bff) 52%, transparent 100%);
+  opacity:.8;
+}
+.v11-draws .hd{
+  min-height:42px !important;
+  padding:.58rem max(1rem, env(safe-area-inset-left)) .42rem !important;
+  gap:.62rem !important;
+}
+.v11-results-title{
+  font-size:.79rem;
+  font-weight:800 !important;
+  letter-spacing:.01em;
+  color:var(--text,#1f2937);
+}
+.v11-results-title i{
+  width:27px;height:27px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  color:var(--primary);
+  background:var(--jl-v75-soft);
+}
+.v11-results-date{
+  display:inline-flex;
+  align-items:center;
+  min-height:27px;
+  padding:0 .55rem;
+  border-radius:999px;
+  background:color-mix(in oklab,var(--surface-2,#f3f4f6) 72%,transparent);
+  border:1px solid var(--jl-v75-line);
+  font-size:.68rem;
+  font-weight:700;
+}
+.v11-draws .hd button{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  margin-left:auto;
+  border:1px solid var(--jl-v75-line) !important;
+  background:color-mix(in oklab,var(--surface) 94%,var(--primary) 6%) !important;
+  box-shadow:0 5px 15px rgba(15,23,42,.06);
+}
+.v11-draws .strip{
+  padding:.18rem max(1rem, env(safe-area-inset-left)) .85rem !important;
+  gap:.72rem !important;
+  scroll-snap-type:x mandatory;
+  background:linear-gradient(180deg, transparent, color-mix(in oklab,var(--surface-2,#f6f7f9) 28%,transparent));
+}
+.v11-draw{
+  flex-basis:126px !important;
+  min-height:144px !important;
+  padding:.58rem .45rem .52rem !important;
+  gap:.33rem !important;
+  border:1px solid var(--jl-v75-line) !important;
+  border-radius:19px !important;
+  background:color-mix(in oklab,var(--surface,#fff) 97%,var(--primary,#3158c7) 3%) !important;
+  box-shadow:0 7px 18px rgba(15,23,42,.045);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.v11-draw:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in oklab,var(--primary) 34%,var(--border)) !important;
+  box-shadow:0 13px 26px rgba(15,23,42,.09);
+}
+.v11-draw:active{transform:scale(.975) !important}
+.v11-draw-logo{
+  height:58px !important;
+  position:relative;
+}
+.v11-ball{
+  width:54px !important;height:54px !important;
+  border:3px solid color-mix(in oklab,var(--surface,#fff) 78%,transparent);
+  box-shadow:0 7px 16px rgba(15,23,42,.14) !important;
+}
+.v11-draw .nm{
+  min-height:31px !important;
+  font-size:.68rem !important;
+  font-weight:800 !important;
+  letter-spacing:.015em;
+  color:var(--text,#1f2937);
+}
+.v11-draw-time{
+  padding:.2rem .38rem;
+  border-radius:999px;
+  background:color-mix(in oklab,var(--surface-2,#f3f4f6) 74%,transparent);
+  font-weight:700;
+}
+.v11-lots{
+  min-height:26px !important;
+  gap:.22rem !important;
+}
+.v11-lot{
+  min-width:27px;
+  min-height:24px !important;
+  border-radius:8px !important;
+  background:var(--jl-v75-soft) !important;
+  border:1px solid color-mix(in oklab,var(--primary) 13%,transparent);
+  color:var(--text,#1f2937);
+  font-weight:800;
+}
+.v11-lot.l1{font-size:.75rem !important}
+.v11-lot.l2,.v11-lot.l3{font-size:.67rem !important;opacity:.88}
+.v11-results-empty{
+  margin:.45rem 1rem .85rem;
+  width:calc(100% - 2rem);
+  border-radius:16px;
+  border:1px dashed var(--jl-v75-line);
+  background:color-mix(in oklab,var(--surface-2,#f6f7f9) 55%,transparent);
+}
+
+/* ---------- Mobile: native application feeling ---------- */
+@media (max-width:959px){
+  body.jl-appshell .appbar{
+    min-height:calc(64px + env(safe-area-inset-top,0px)) !important;
+    height:auto !important;
+    padding:env(safe-area-inset-top,0px) .9rem .5rem !important;
+  }
+  body.jl-appshell .appbar .left,
+  body.jl-appshell .appbar .right{
+    min-height:52px;
+  }
+  body.jl-appshell #collapse-btn{
+    width:42px !important;height:42px !important;
+    border-radius:14px !important;
+    background:color-mix(in oklab,var(--surface-2,#f3f4f6) 76%,transparent) !important;
+    border:1px solid var(--jl-v75-line) !important;
+  }
+  body.jl-appshell .jl-wordmark{
+    margin-left:.25rem;
+    padding:.48rem .7rem;
+    border-radius:14px;
+    background:color-mix(in oklab,var(--surface) 90%,transparent);
+  }
+  body.jl-appshell .jl-wordmark b{font-size:1.02rem}
+  body.jl-appshell .jl-dots-btn{
+    width:42px !important;height:42px !important;
+    border-radius:14px !important;
+    border:1px solid var(--jl-v75-line) !important;
+    background:color-mix(in oklab,var(--surface-2,#f3f4f6) 76%,transparent) !important;
+  }
+
+  .v11-draws{position:relative !important;top:auto !important}
+  .v11-draws .hd{
+    min-height:39px !important;
+    padding:.5rem .8rem .35rem !important;
+  }
+  .v11-results-title{font-size:.74rem}
+  .v11-results-date{font-size:.62rem;padding:0 .45rem}
+  .v11-draws .strip{
+    padding:.12rem .8rem .78rem !important;
+    gap:.58rem !important;
+  }
+  .v11-draw{
+    flex-basis:112px !important;
+    min-height:134px !important;
+    border-radius:17px !important;
+    padding:.48rem .32rem !important;
+  }
+  .v11-draw-logo{height:54px !important}
+  .v11-ball{width:50px !important;height:50px !important}
+  .v11-draw .nm{font-size:.63rem !important}
+  .v11-draw-time{font-size:.58rem}
+  .v11-lot{min-width:24px;min-height:23px !important;font-size:.62rem !important}
+
+  /* General mobile cards and actions */
+  body.jl-appshell .view .card,
+  body.jl-appshell .view .panel,
+  body.jl-appshell .view .stat-card{
+    border-radius:20px;
+  }
+  body.jl-appshell .view{
+    background:
+      radial-gradient(420px 260px at 100% 0%, color-mix(in oklab,var(--primary) 6%,transparent), transparent 72%);
+  }
+}
+
+/* Dark mode keeps hierarchy and contrast */
+html[data-theme="dark"] .v11-draws,
+body.dark .v11-draws{
+  box-shadow:0 12px 30px rgba(0,0,0,.22);
+}

@@ -1,0 +1,210 @@
+/* =====================================================================
+ * JADSTACK LOTTO — app-shell-mobile.css
+ * ---------------------------------------------------------------------
+ * Chaje AN DÈNYE. TOUT REGL ANDANN @media (max-width:959px) — sou
+ * tablèt/PC anyen pa chanje, zewo risk regresyon sou layout desktop la.
+ *
+ * Itilize varyab tokens.css ki egziste deja (--primary, --surface,
+ * --border, --radius, --shadow…) — zewo koulè nouvo hardcode.
+ * ===================================================================== */
+
+@media (max-width: 959px) {
+
+  /* ---------------------------------------------------------------
+   * 1) TOPBAR MENS — hamburger stil "≡" + wordmark JADSTACK lotto
+   * --------------------------------------------------------------- */
+  :root { --bn-h: 64px; --fab-size: 56px; }
+
+  /* V64 — kache scrollbar la sou #view/sidebar sou mobil sèlman
+     (aparans app natif). Skwòl la kontinye mache nòmalman. */
+  body.jl-appshell #view,
+  body.jl-appshell .sidebar,
+  body.jl-appshell .side-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body.jl-appshell #view::-webkit-scrollbar,
+  body.jl-appshell .sidebar::-webkit-scrollbar,
+  body.jl-appshell .side-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.jl-appshell .appbar {
+    height: 56px;
+    padding: 0 var(--sp-3);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+  }
+  body.jl-appshell .appbar .logo-wide,
+  body.jl-appshell .appbar .badge,
+  body.jl-appshell .appbar #theme-btn,
+  body.jl-appshell .appbar .avatar,
+  body.jl-appshell .appbar #logout-btn { display: none; }
+
+  body.jl-appshell #collapse-btn {
+    width: 34px; height: 26px; display: flex; flex-direction: column;
+    justify-content: center; gap: 5px; background: none; border: none; padding: 0;
+  }
+  body.jl-appshell #collapse-btn i { display: none; }
+  body.jl-appshell #collapse-btn::before,
+  body.jl-appshell #collapse-btn::after {
+    content: ''; display: block; height: 2.5px; border-radius: 2px; background: var(--text);
+  }
+  body.jl-appshell #collapse-btn::before { width: 22px; }
+  body.jl-appshell #collapse-btn::after  { width: 13px; }
+
+  .jl-wordmark {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.02rem;
+    display: flex; align-items: baseline; gap: .3rem; white-space: nowrap;
+  }
+  .jl-wordmark b { color: var(--primary); letter-spacing: -.01em; }
+  .jl-wordmark span { color: var(--muted); font-weight: 500; font-size: .84rem; }
+
+  .jl-dots-btn {
+    margin-left: auto; width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; font-size: 1.15rem; color: var(--text);
+  }
+  .jl-dots-btn:active { background: var(--surface-2); }
+
+  /* ---------------------------------------------------------------
+   * 2) DRAWER — kat pa antre olye senp liy
+   * --------------------------------------------------------------- */
+  body.jl-appshell .sidebar { width: min(86vw, 320px); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+  body.jl-appshell .side-link {
+    margin: 2px var(--sp-2); border-radius: var(--radius); padding: .7rem .9rem;
+  }
+  body.jl-appshell .side-link[aria-current="page"] {
+    background: var(--primary-soft); color: var(--primary); font-weight: 600;
+  }
+  body.jl-appshell .side-link .ico {
+    width: 34px; height: 34px; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; background: var(--surface-2); margin-right: .2rem;
+  }
+
+  /* ---------------------------------------------------------------
+   * 3) BOTTOM-NAV — 5 pi gwo antre nan meni an
+   * --------------------------------------------------------------- */
+  body.jl-appshell .shell,
+  body.jl-appshell .shell { padding-bottom: var(--bn-h); }
+
+  .jl-bottom-nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; height: var(--bn-h);
+    display: flex; background: color-mix(in oklab, var(--surface) 96%, transparent);
+    backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-top: 1px solid var(--border);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    box-shadow: 0 -2px 14px rgba(0,0,0,.06);
+  }
+  .jl-bottom-nav button {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 2px; background: none; border: none; color: var(--muted); font-size: .64rem;
+    font-family: var(--font); padding: 6px 2px 4px;
+  }
+  .jl-bottom-nav button i { font-size: 1.08rem; transition: transform .15s var(--easing); }
+  .jl-bottom-nav button.active { color: var(--primary); font-weight: 600; }
+  .jl-bottom-nav button.active i { transform: translateY(-1px) scale(1.08); }
+  .jl-bottom-nav button:active { opacity: .6; }
+
+  /* ---------------------------------------------------------------
+   * 4) FAB
+   * --------------------------------------------------------------- */
+  .jl-fab {
+    position: fixed; right: var(--sp-4); bottom: calc(var(--bn-h) + var(--sp-3)); z-index: 56;
+    width: var(--fab-size); height: var(--fab-size); border-radius: 50%;
+    background: var(--primary); color: var(--primary-fg); border: none;
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    box-shadow: var(--shadow-lg); transition: transform var(--dur) var(--easing);
+  }
+  .jl-fab:active { transform: scale(.92); }
+
+  /* ---------------------------------------------------------------
+   * 5) BOTTOM-SHEET (meni 3 pwen)
+   * --------------------------------------------------------------- */
+  .jl-sheet-backdrop {
+    position: fixed; inset: 0; z-index: 80; background: rgba(4,10,15,.5);
+    opacity: 0; pointer-events: none; transition: opacity var(--dur) var(--easing);
+  }
+  .jl-sheet-backdrop.open { opacity: 1; pointer-events: auto; }
+  .jl-sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 81;
+    background: var(--surface); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: var(--shadow-lg); transform: translateY(100%);
+    transition: transform var(--dur) var(--easing);
+    padding: var(--sp-2) 0 calc(var(--sp-3) + env(safe-area-inset-bottom, 0));
+    max-height: 80vh; overflow-y: auto;
+  }
+  .jl-sheet-backdrop.open .jl-sheet { transform: translateY(0); }
+  .jl-sheet .jl-sheet-handle {
+    width: 36px; height: 4px; border-radius: 3px; background: var(--border);
+    margin: var(--sp-2) auto var(--sp-3);
+  }
+  .jl-sheet .jl-sheet-head {
+    display: flex; align-items: center; gap: .7rem; padding: 0 var(--sp-4) var(--sp-3);
+    border-bottom: 1px solid var(--border); margin-bottom: var(--sp-2);
+  }
+  .jl-sheet .jl-sheet-avatar {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--primary);
+    color: var(--primary-fg); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-family: var(--font-display);
+  }
+  .jl-sheet .jl-sheet-name { font-weight: 600; }
+  .jl-sheet .jl-sheet-role { font-size: .78rem; color: var(--muted); text-transform: capitalize; }
+  .jl-sheet-item {
+    display: flex; align-items: center; gap: .9rem; width: 100%; text-align: left;
+    padding: .8rem var(--sp-4); background: none; border: none; font-size: .92rem; color: var(--text);
+  }
+  .jl-sheet-item i { width: 20px; text-align: center; color: var(--muted); }
+  .jl-sheet-item:active { background: var(--surface-2); }
+  .jl-sheet-item.danger { color: var(--danger); }
+  .jl-sheet-item.danger i { color: var(--danger); }
+
+  /* ---------------------------------------------------------------
+   * 6) CARDIFY — tab yo vin lis kat sou mobil (menm eleman DOM/evènman)
+   * --------------------------------------------------------------- */
+  .jl-cardified.table { display: block; width: 100%; }
+  .jl-cardified.table thead { display: none; }
+  .jl-cardified.table tbody { display: block; }
+  .jl-cardified.table tr {
+    display: block; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: .7rem .9rem; margin-bottom: .55rem;
+    box-shadow: var(--shadow);
+  }
+  .jl-cardified.table td {
+    display: flex; justify-content: space-between; align-items: center; gap: .8rem;
+    padding: .3rem 0; border: none; text-align: right; font-size: .88rem;
+  }
+  .jl-cardified.table td[data-label]::before {
+    content: attr(data-label); font-size: .72rem; color: var(--muted);
+    font-weight: 600; text-align: left; flex: 0 0 auto;
+  }
+  .jl-cardified.table td:empty,
+  .jl-cardified.table td[data-label=""]{ display:none; }
+
+  /* ---------------------------------------------------------------
+   * 7) HEADER KI KACHE LÈ W DESANN (mobile-gestures.js)
+   * --------------------------------------------------------------- */
+  .appbar {
+    transition: transform .22s var(--easing, ease);
+    will-change: transform;
+  }
+  .appbar.jl-hide { transform: translateY(-100%); }
+
+  /* ---------------------------------------------------------------
+   * 8) PULL-TO-REFRESH ELASTIK (mobile-gestures.js)
+   * --------------------------------------------------------------- */
+  .jl-pull-indicator {
+    position: fixed; top: 8px; left: 50%; z-index: 70;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+    color: var(--primary); font-size: .95rem;
+    opacity: 0; pointer-events: none;
+    transform: translateX(-50%) translateY(0px);
+    transition: opacity .15s var(--easing, ease), background-color .15s var(--easing, ease);
+  }
+  .jl-pull-indicator.show { opacity: .9; }
+  .jl-pull-indicator.ready { background: var(--primary); color: #fff; }
+  .jl-pull-indicator.spin i { animation: jl-pull-spin .7s linear infinite; }
+  @keyframes jl-pull-spin { to { transform: rotate(360deg); } }
+}

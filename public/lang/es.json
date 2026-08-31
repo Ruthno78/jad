@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "agent": "Agente",
+    "company": "Compañía",
+    "superadmin": "Super Admin",
+    "employer": "Empleador",
+    "contact": "Contacto",
+    "legal": "Aviso legal",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "lang": "Idioma"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "filter": "Filtro",
+    "add": "Añadir",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "send": "Enviar",
+    "print": "Imprimir",
+    "total": "Total",
+    "date": "Fecha",
+    "amount": "Monto",
+    "status": "Estado",
+    "loading": "Cargando…",
+    "empty": "Nada que mostrar.",
+    "yes": "Sí",
+    "no": "No",
+    "back": "Volver"
+  },
+  "err": {
+    "required": "Este campo es obligatorio.",
+    "email": "Correo no válido.",
+    "network": "Falló la conexión. Inténtalo de nuevo.",
+    "denied": "No tienes permiso para esta acción.",
+    "generic": "Ocurrió un error. Inténtalo de nuevo."
+  },
+  "auth": {
+    "email": "Correo",
+    "password": "Contraseña",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "signin": "Iniciar sesión"
+  },
+  "ticket": {
+    "title": "Ficha",
+    "new": "Nueva ficha",
+    "number": "Bola",
+    "game": "Juego",
+    "draw": "Sorteo",
+    "toPay": "TOTAL A PAGAR",
+    "winner": "Ganador",
+    "loser": "No ganador",
+    "paid": "Pagado"
+  },
+  "draw": {
+    "result": "Resultado",
+    "lot1": "1er premio",
+    "lot2": "2do premio",
+    "lot3": "3er premio",
+    "settle": "Cerrar sorteo"
+  },
+  "prime": {
+    "title": "Configuración de premios",
+    "multiplier": "Multiplicador",
+    "byPosition": "Multiplicador por posición"
+  },
+  "chat": {
+    "title": "Mensajes",
+    "placeholder": "Escribe un mensaje…",
+    "reply": "Responder",
+    "react": "Reaccionar",
+    "hide": "Ocultar",
+    "edited": "editado",
+    "verified": "Cuenta verificada",
+    "miniVerified": "Mini Super-Admin — cuenta verificada",
+    "empty": "Aún no hay mensajes.",
+    "contacts": "Contactos"
+  },
+  "report": {
+    "title": "Informe",
+    "sales": "Ventas",
+    "balance": "Saldo",
+    "winners": "Ganadores"
+  },
+  "mg": {
+    "title": "Maryaj GRATIS",
+    "free": "GRATIS · 0 HTG"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

@@ -1,0 +1,51 @@
+/* =====================================================================
+ * JADSTACK LOTTO — V24 (KOUCH AKTYÈL LA)
+ * Fichye sa a se DÈNYE feuille de style ki chaje sou chak paj: se li ki
+ * gen dènye mo a. Tout nouvo règ yo dwe antre ISIT LA (pa nan ansyen
+ * fichye v8/v9/v10/v12/v13 yo ki rete kòm baz istorik).
+ * ===================================================================== */
+
+/* ---------------------------------------------------------------------
+ * V24 · 1 — LOGO RECTANGLE NAN HEADER LA
+ * Li pran TOUT wotè header la mwens 1.5px maj (0.75px anwo + anba),
+ * konsa li pa kole nèt sou bò header la.
+ * ------------------------------------------------------------------- */
+.logo-wide,
+.jl24-logo-wide {
+  display: flex;
+  align-items: center;
+  height: var(--header-h);
+  padding: .75px 0;
+  flex: 0 0 auto;
+}
+
+.logo-wide img,
+.jl24-logo-wide img {
+  height: calc(var(--header-h) - 1.5px);
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fallback tèks la swiv menm wotè a */
+.logo-wide .fallback,
+.jl24-logo-wide .fallback {
+  height: calc(var(--header-h) - 1.5px);
+  display: flex;
+  align-items: center;
+}
+
+/* Nan sidemenu branding preview la, wotè a fikse an liy — pa touche l */
+.brand-preview .logo-wide img { height: 100%; }
+
+/* ---------------------------------------------------------------------
+ * V24 · 2 — ETA TIRAJ (ouvè / fèmen) — badj pou POS ak dashboard
+ * ------------------------------------------------------------------- */
+.jl24-draw-state {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .74rem; font-weight: 700; letter-spacing: .02em;
+  padding: .15rem .5rem; border-radius: 999px; border: 1px solid transparent;
+}
+.jl24-draw-state.is-open   { color: #0a7c3f; background: rgba(16,163,74,.12); border-color: rgba(16,163,74,.35); }
+.jl24-draw-state.is-closed { color: #a11414; background: rgba(220,38,38,.10); border-color: rgba(220,38,38,.30); }

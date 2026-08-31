@@ -1,0 +1,32 @@
+/* =====================================================================
+ * JADSTACK LOTTO V17 — Estil nouvo eleman (mesaj, kontak multi, kopye
+ * done, footer global). Chaje apre v11.css/v12.css sou tout paj.
+ * ===================================================================== */
+
+/* §1 — REMÒK V27 FAZ4b : meni « ⋮ » ki te la a te ranplase pa ranje
+   ikòn (.v25-acts) anba chak mesaj — .v17-msg-menu pa itilize ankò
+   nan okenn fichye JS (verifye). Nou retire `.v11-bub{padding-top:1.35rem}`
+   la net: se yon rès kòd ki te blije bay espas pou meni fantom sa a, e li
+   t ap gonfle CHAK bul mesaj (menm yon sèl mo tankou "bonjou") san rezon. */
+.v17-msg-edited{display:inline-block;font-size:.62rem;font-style:italic;opacity:.6;margin-left:.35rem}
+.v17-msg-clock{display:inline-block;font-size:.6rem;opacity:.5;margin-left:.35rem}
+
+/* §6 — Popup kontak: checkbox seleksyon miltip */
+.v17-cf-check input[type="checkbox"]{width:16px;height:16px;flex-shrink:0}
+#cf-sendbar{border-top:1px solid var(--border,#e2e6ec)}
+
+/* §8 — Ti footer konpak anba chasi a (paj wòl: ajan/konpayi/super-admin/employeur) */
+.jl17-foot{border-top:1px solid var(--border,#e2e6ec);background:var(--surface,#fff)}
+.jl17-foot-in{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;justify-content:space-between;
+  padding:.65rem 1.1rem;font-size:.72rem;color:var(--text-muted,#8b93a1)}
+.jl17-foot-in a{color:inherit;text-decoration:none}
+.jl17-foot-in a:hover{text-decoration:underline}
+.jl17-foot-soc{display:flex;gap:.6rem;font-size:.95rem}
+.jl17-foot-resp{opacity:.9;display:flex;align-items:center;gap:.3rem}
+
+/* §9.2 — feedback "Kopye ✓" disrè (stil WhatsApp/Telegram) */
+.jl17-copy-tip{position:fixed;z-index:9999;pointer-events:none;font-size:.7rem;font-weight:600;
+  background:var(--primary,#2f7d5b);color:#fff;padding:.2rem .5rem;border-radius:6px;
+  box-shadow:0 2px 6px rgba(0,0,0,.18);opacity:1;transform:translateY(0);
+  transition:opacity .25s,transform .25s}
+.jl17-copy-tip.out{opacity:0;transform:translateY(-6px)}

@@ -1,0 +1,106 @@
+/* =====================================================================
+ * JADSTACK LOTTO — Design tokens (v6)
+ * Palèt la soti DIRÈKTEMAN nan logo a (color-pick sou fichye logo a):
+ *   navy fonse  #00345C   • ble mwayen #03507E   • vèt lim #A2C835
+ * ZEWO koulè hardcode nan HTML/JS — tout bagay pase isit la.
+ * Super Admin ka reekri nenpòt nan varyab sa yo (tab site_config -> theme).
+ * ===================================================================== */
+:root {
+  /* Mak — palèt refwadi/pwofesyonèl: te fonse pwofon + lò cho kòm aksan */
+  --brand-navy:  #0E4C74;
+  --brand-blue:  #146B9C;
+  --brand-lime: #A2C835;
+  --brand-lime-d:#8AAE24;
+  --primary:       var(--brand-navy);
+  --primary-hover: #0A3A59;
+  --primary-soft:  #E6EEF3;
+  --primary-fg:    #FFFFFF;
+  --accent:        var(--brand-lime);
+  --accent-hover:  var(--brand-lime-d);
+  --accent-soft:   #FBF1DC;
+  --accent-fg:     #2B1B04;
+  --dark:          #0A2E44;
+
+  /* Sifas */
+  --bg:        #F6F8FA;
+  --bg-tint:   #EEF2F5;
+  --surface:   #FFFFFF;
+  --surface-2: #F2F5F7;
+  --surface-3: #E6EBEF;
+  --text:      #12202B;
+  --muted:     #5B6B78;
+  --border:    #DEE4E9;
+
+  /* Semantik */
+  --success: #2F7D4F; --success-soft: #E4F2E9;
+  --danger:  #C0392B; --danger-soft:  #FBE6E3;
+  --warning: #B5810E; --warning-soft: #FAF0D6;
+  --info:    var(--brand-blue); --info-soft: #E6EFF6;
+
+  /* Layout */
+  --radius: 14px; --radius-sm: 9px; --radius-lg: 22px; --radius-pill: 999px;
+  --header-h: 62px;
+  --sidebar-w: 252px;
+  --sidebar-w-collapsed: 70px;
+
+  --shadow:    0 1px 2px rgba(0,52,92,.05), 0 4px 10px -4px rgba(0,52,92,.09);
+  --shadow-md: 0 2px 6px rgba(0,52,92,.06), 0 12px 26px -12px rgba(0,52,92,.18);
+  --shadow-lg: 0 4px 14px rgba(0,52,92,.08), 0 28px 64px -22px rgba(0,52,92,.30);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--accent) 45%, transparent),
+                 0 14px 34px -14px color-mix(in oklab, var(--primary) 55%, transparent);
+
+  --font-display: 'Space Grotesk','Inter',system-ui,sans-serif;
+  --font: 'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --font-mono: 'JetBrains Mono',ui-monospace,monospace;
+
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-7:32px; --sp-8:48px;
+  --easing: cubic-bezier(.2,.7,.2,1);
+  --dur: 180ms;
+  --dur-card: 3s;              /* tranzisyon fon ti card yo (mande nan prompt la) */
+}
+
+:root[data-theme="dark"] {
+  --primary:       #4FA3C7;
+  --primary-hover: #6BB6D6;
+  --primary-soft:  #0F2A38;
+  --primary-fg:    #04121C;
+  --accent:        #E8BB5D;
+  --accent-hover:  #F0CB7C;
+  --accent-soft:   #2A2009;
+  --accent-fg:     #1A1204;
+  --dark:          #040D14;
+
+  --bg:        #0A161F;
+  --bg-tint:   #0D1B25;
+  --surface:   #101E29;
+  --surface-2: #152532;
+  --surface-3: #1C303E;
+  --text:      #E7EEF3;
+  --muted:     #93A6B3;
+  --border:    #223547;
+
+  --success:#48B076; --success-soft:#0E2A1C;
+  --danger:#E4695C;  --danger-soft:#33110E;
+  --warning:#DDAE3F; --warning-soft:#2E2409;
+  --info:#4C9FD8;    --info-soft:#0B2436;
+
+  --shadow:    0 1px 2px rgba(0,0,0,.45), 0 6px 14px -6px rgba(0,0,0,.6);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.5), 0 14px 30px -12px rgba(0,0,0,.72);
+  --shadow-lg: 0 4px 14px rgba(0,0,0,.55), 0 28px 66px -22px rgba(0,0,0,.85);
+}
+
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: var(--font); background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased; line-height:1.55; letter-spacing:-.005em; font-size:15px;
+}
+a { color: var(--primary); text-decoration:none; transition: color var(--dur) var(--easing); }
+a:hover { color: var(--primary-hover); }
+h1,h2,h3,h4 { margin:0 0 .5rem; font-family: var(--font-display); letter-spacing:-.028em; font-weight:600; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:6px; }
+.fa-fw-icon { width:1.15em; text-align:center; }
+.muted { color: var(--muted); }
+.text-success{color:var(--success)} .text-danger{color:var(--danger)}
+.text-warning{color:var(--warning)} .text-accent{color:var(--accent)}
+.mono { font-family: var(--font-mono); }

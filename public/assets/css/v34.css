@@ -1,0 +1,68 @@
+/* =====================================================================
+ * JADSTACK LOTTO V34 — SKWÒL MOBIL (KOZ PRENSIPAL LA) + LOCK POPUP
+ * ---------------------------------------------------------------------
+ * KOZ PRENSIPAL SKWÒL BLOKE A:
+ *  1. `.shell{min-height:100dvh}` + `.sidebar{position:fixed;height:100dvh}`
+ *     ak `overflow:hidden` : lè yon tiwa (drawer) oswa yon popup te louvri
+ *     epi li pa te fèmen nèt (ex: `display:none` pa te remèt), yon kouch
+ *     `position:fixed;inset:0` te rete anwo paj la e li te kenbe tout
+ *     jès dwèt la — konsa se sèlman nan bò anba oswa ak 2 dwèt paj la
+ *     te bouje.
+ *  2. `100vh` sou WebView APK/Safari mobil: wotè a pi gwo pase vyewport
+ *     reyèl la, kidonk dènye ekran an tonbe anba bar navigatè a.
+ * KOREKSYON: tout wotè ekran vin `100dvh` (ak `100svh` an sekou), backdrop
+ * yo pa janm entèsepte jès lè yo fèmen, epi lock skwòl la fèt SÈLMAN pa
+ * klas `jl34-lock` (scroll-fix.js mete/retire li), avèk pozisyon konsève.
+ * ===================================================================== */
+
+html { -webkit-text-size-adjust: 100%; }
+
+html, body {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 100%;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;              /* skwòl vètikal ak YON sèl dwèt */
+}
+
+/* Konteyner aplikasyon an pa janm bloke skwòl */
+.shell, .app, .app-main, .main, .view, .content, .page, main {
+  max-height: none !important;
+}
+.shell { min-height: 100svh; min-height: 100dvh; }
+
+/* Backdrop / kouch fikse: pa entèsepte dwèt lè yo pa aktif */
+.sidebar-backdrop:not(.is-open),
+.modal-backdrop[hidden],
+.v11-pop[hidden] { pointer-events: none !important; display: none !important; }
+
+/* Tiwa meni: wotè dinamik, skwòl pwòp pa l */
+.sidebar { height: calc(100svh - var(--header-h)); height: calc(100dvh - var(--header-h)); }
+.side-scroll { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+
+/* Lock skwòl paj la SÈLMAN lè yon popup / tiwa louvri.
+   `top` mete pa JS pou nou pa pèdi pozisyon an. */
+body.jl34-lock {
+  position: fixed !important;
+  left: 0; right: 0; width: 100%;
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Popup: kontni ka defile andedan, san rale paj la dèyè */
+.modal, .v11-pop .v11-pop-card {
+  max-height: 86svh; max-height: 86dvh;
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+}
+
+/* Zòn jès: bò goch la ouvè tiwa a (bale dwèt adwat) */
+.jl34-edge {
+  position: fixed; left: 0; top: var(--header-h); bottom: 0; width: 22px;
+  z-index: 64; touch-action: pan-y; background: transparent;
+}
+@media (min-width: 960px) { .jl34-edge { display: none; } }
+
+/* Plas anba pou bar mobil / footer APK */
+.view, main { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }

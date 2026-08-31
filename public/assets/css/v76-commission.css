@@ -1,0 +1,14 @@
+
+/* V77 — commission individuelle */
+.v77-agent-commission{margin-top:18px}
+.v77-ac-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 16px}
+.v77-ac-stat{padding:14px;border:1px solid var(--border,#e5e7eb);border-radius:14px;background:var(--card,#fff)}
+.v77-ac-stat small{display:block;color:var(--muted,#667085);margin-bottom:5px}.v77-ac-stat strong{font-size:1.25rem}
+.v77-agent-rate-cell{display:flex;align-items:center;gap:4px;min-width:105px}.v77-agent-rate-cell .input{width:82px;padding:.4rem .5rem}
+@media(max-width:700px){.v77-ac-summary{grid-template-columns:1fr}.v77-agent-rate-cell{min-width:92px}}
+/* V77 commission controls */
+.v77-ac-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.v77-ac-stat{padding:14px;border:1px solid var(--border,#e5e7eb);border-radius:12px;background:var(--card,#fff)}
+.v77-ac-stat small{display:block;color:var(--muted,#64748b);margin-bottom:4px}.v77-ac-stat strong{font-size:1.15rem}
+.v77-agent-commission .input-sm{min-height:38px}
+@media(max-width:700px){.v77-ac-summary{grid-template-columns:1fr}.v77-agent-commission .table-wrap{overflow-x:auto}}

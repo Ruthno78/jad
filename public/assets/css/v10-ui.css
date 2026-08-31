@@ -1,0 +1,500 @@
+/* =====================================================================
+ * JADSTACK LOTTO — V10 UI/UX LAYER (2025–2026)
+ * ---------------------------------------------------------------------
+ * OBJEKTIF: yon aparans modèn, pwofesyonèl, kreyatif — SAN CHANJE
+ * OKENN LOJIK. Fichye sa a se yon KOUCH VIZYÈL sèlman:
+ *   • Li chaje ANDÈYE tout lòt CSS (dènye nan <head>).
+ *   • Li pa touche okenn JS, okenn non klas, okenn HTML estriktirèl.
+ *   • Li rafine: tipografi fliyid, koulè, radius, lonbraj, glassmorphism,
+ *     mikwo-entèraksyon, ergonomi mobil (tap target 44px), a11y.
+ * ===================================================================== */
+
+/* ---------------------------------------------------------------------
+ * 1. TOKENS RAFINE — menm idantite mak la, jis pi rafine
+ * ------------------------------------------------------------------- */
+:root {
+  /* Palèt: navy pi pwofon + ble elektrik dou + lim mak la kòm aksan */
+  --brand-navy:  #0B3F63;
+  --brand-blue:  #1476AE;
+  --brand-lime:  #A2C835;
+  --brand-lime-d:#87AC22;
+
+  --primary:       #0C4A72;
+  --primary-hover: #0A3D5E;
+  --primary-soft:  #E8F1F7;
+  --primary-fg:    #FFFFFF;
+
+  --accent:        #A2C835;
+  --accent-hover:  #8FB528;
+  --accent-soft:   #F1F7DE;
+  --accent-fg:     #1E2A05;
+
+  /* Sifas — pi klè, pi respirab */
+  --bg:        #F7F9FB;
+  --bg-tint:   #EFF4F8;
+  --surface:   #FFFFFF;
+  --surface-2: #F3F6F9;
+  --surface-3: #E7EDF3;
+  --text:      #0F1D28;
+  --muted:     #5F7181;
+  --border:    #E2E9EF;
+  --border-strong:#CFDAE4;
+
+  /* Geyometri 2026: radius pi dou, echèl konsistan */
+  --radius:      16px;
+  --radius-sm:   11px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
+  --radius-pill: 999px;
+
+  /* Lonbraj miltikouch (pi reyalis, mwens "boks") */
+  --shadow:    0 1px 1px rgba(11,63,99,.04), 0 2px 6px -2px rgba(11,63,99,.08);
+  --shadow-md: 0 1px 2px rgba(11,63,99,.05), 0 10px 24px -12px rgba(11,63,99,.16);
+  --shadow-lg: 0 2px 4px rgba(11,63,99,.06), 0 28px 60px -24px rgba(11,63,99,.28);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 22%, transparent),
+                 0 12px 30px -14px color-mix(in oklab, var(--primary) 55%, transparent);
+  --ring: 0 0 0 3px color-mix(in oklab, var(--primary) 22%, transparent);
+
+  /* Gradyan semantik */
+  --grad-brand: linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
+  --grad-accent: linear-gradient(135deg, var(--brand-lime-d), var(--brand-lime));
+  --grad-mesh:
+    radial-gradient(58% 44% at 8% -6%,  color-mix(in oklab, var(--brand-blue) 20%, transparent), transparent 70%),
+    radial-gradient(46% 40% at 96% 4%,  color-mix(in oklab, var(--accent) 26%, transparent), transparent 72%),
+    radial-gradient(60% 60% at 50% 110%,color-mix(in oklab, var(--brand-navy) 12%, transparent), transparent 70%);
+
+  /* Mouvman — spring dou, pa "bouncy" twòp */
+  --easing: cubic-bezier(.22,.68,.24,1);
+  --spring: cubic-bezier(.34,1.28,.5,1);
+  --dur: 200ms;
+  --dur-card: 420ms;
+}
+
+:root[data-theme="dark"] {
+  --primary:       #58AEDA;
+  --primary-hover: #7CC3E7;
+  --primary-soft:  #102B3B;
+  --primary-fg:    #04121C;
+  --accent:        #BBDD57;
+  --accent-hover:  #CCE87A;
+  --accent-soft:   #202B0C;
+  --accent-fg:     #101804;
+
+  --bg:        #071119;
+  --bg-tint:   #0A1721;
+  --surface:   #0E1D28;
+  --surface-2: #142534;
+  --surface-3: #1B3040;
+  --text:      #E9F1F6;
+  --muted:     #91A6B5;
+  --border:    #1E3242;
+  --border-strong:#2A4356;
+
+  --shadow:    0 1px 2px rgba(0,0,0,.5), 0 4px 12px -6px rgba(0,0,0,.6);
+  --shadow-md: 0 2px 6px rgba(0,0,0,.55), 0 16px 34px -16px rgba(0,0,0,.75);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,.6), 0 34px 70px -26px rgba(0,0,0,.9);
+  --ring: 0 0 0 3px color-mix(in oklab, var(--primary) 30%, transparent);
+  --grad-mesh:
+    radial-gradient(58% 44% at 8% -6%,  color-mix(in oklab, var(--primary) 16%, transparent), transparent 70%),
+    radial-gradient(46% 40% at 96% 4%,  color-mix(in oklab, var(--accent) 12%, transparent), transparent 72%),
+    radial-gradient(60% 60% at 50% 110%,color-mix(in oklab, #000 30%, transparent), transparent 70%);
+}
+
+/* ---------------------------------------------------------------------
+ * 2. TIPOGRAFI FLIYID
+ * ------------------------------------------------------------------- */
+body {
+  font-size: clamp(14.5px, .35vw + 13.6px, 16px);
+  line-height: 1.6;
+  letter-spacing: -.006em;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4 { font-weight: 650; letter-spacing: -.03em; line-height: 1.18; }
+h1 { text-wrap: balance; }
+h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+.muted { color: var(--muted); }
+
+::selection { background: color-mix(in oklab, var(--accent) 55%, transparent); color: var(--text); }
+
+/* Scrollbar rafine */
+* { scrollbar-width: thin; scrollbar-color: var(--surface-3) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--surface-3); border-radius: 999px;
+  border: 3px solid transparent; background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--border-strong); background-clip: content-box; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* Focus vizib konsistan */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 8px; }
+
+/* ---------------------------------------------------------------------
+ * 3. BOUTON — mikwo-entèraksyon, tap target mobil
+ * ------------------------------------------------------------------- */
+.btn {
+  position: relative;
+  min-height: 42px;
+  padding: .58rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transition: background var(--dur) var(--easing), border-color var(--dur) var(--easing),
+              box-shadow var(--dur) var(--easing), transform 140ms var(--spring), filter var(--dur) var(--easing);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover { transform: translateY(-1.5px); }
+.btn:active { transform: translateY(0) scale(.985); }
+
+.btn-primary {
+  background: var(--grad-brand);
+  border-color: transparent;
+  color: var(--primary-fg);
+  box-shadow: 0 1px 2px rgba(11,63,99,.18), 0 8px 20px -10px color-mix(in oklab, var(--primary) 70%, transparent);
+}
+.btn-primary:hover { background: var(--grad-brand); filter: saturate(112%) brightness(1.06); box-shadow: var(--shadow-glow); }
+:root[data-theme="dark"] .btn-primary { background: var(--primary); color: var(--primary-fg); }
+:root[data-theme="dark"] .btn-primary:hover { background: var(--primary-hover); }
+
+.btn-accent { background: var(--grad-accent); border-color: transparent; color: var(--accent-fg);
+  box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--accent) 80%, transparent); }
+.btn-accent:hover { filter: brightness(1.05); }
+
+.btn-ghost { background: transparent; border-color: var(--border-strong); }
+.btn-ghost:hover { background: var(--surface-2); border-color: var(--primary); color: var(--primary); }
+
+.btn-danger { box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--danger) 70%, transparent); }
+.btn-icon { width: 42px; height: 42px; min-height: 42px; border-radius: var(--radius-sm); }
+.btn-sm { min-height: 34px; padding: .34rem .8rem; border-radius: 9px; }
+.btn-lg { min-height: 50px; padding: .85rem 1.6rem; font-size: 1rem; border-radius: var(--radius); }
+.btn:disabled { opacity: .45; filter: grayscale(.35); }
+
+@media (max-width: 640px) {
+  .btn { min-height: 44px; }
+  .btn-lg { width: 100%; }
+}
+
+/* ---------------------------------------------------------------------
+ * 4. CARD / SIFAS — pwofondè dou, hover elegan
+ * ------------------------------------------------------------------- */
+.card {
+  border-radius: var(--radius);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--dur) var(--easing), transform var(--dur) var(--easing),
+              border-color var(--dur) var(--easing);
+}
+.card:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.card-hd h2, .card-hd h3 { font-size: 1.02rem; letter-spacing: -.02em; }
+
+/* Ti aksan limyè anlè kèk card estatistik (san chanje mak-ap la) */
+.stat-card, .kpi, .stats-card { border-radius: var(--radius); }
+
+/* ---------------------------------------------------------------------
+ * 5. FÒM — pi gwo pou dwèt, focus ring dou
+ * ------------------------------------------------------------------- */
+.input, .select, .textarea {
+  height: 46px;
+  padding: 0 .95rem;
+  border-radius: var(--radius-sm);
+  border-color: var(--border-strong);
+  font-size: .95rem;
+  background: var(--surface);
+  transition: border-color var(--dur) var(--easing), box-shadow var(--dur) var(--easing), background var(--dur) var(--easing);
+}
+.select { padding-right: 2.2rem; }
+.textarea, textarea.input { height: auto; min-height: 132px; padding: .8rem .95rem; }
+.input:hover, .select:hover, .textarea:hover { border-color: color-mix(in oklab, var(--primary) 35%, var(--border-strong)); }
+.input:focus, .select:focus, .textarea:focus { border-color: var(--primary); box-shadow: var(--ring); }
+.label { font-size: .74rem; letter-spacing: .07em; color: var(--muted); font-weight: 700; }
+.form-row { margin-bottom: 1.05rem; }
+
+.switch .track { width: 44px; height: 25px; }
+.switch .track::after { width: 21px; height: 21px; transition: transform var(--dur) var(--spring); }
+.switch input:checked + .track { background: var(--grad-brand); }
+.switch input:checked + .track::after { transform: translateX(19px); }
+
+@media (max-width: 640px) {
+  .input, .select { height: 48px; font-size: 1rem; } /* anpeche zoom iOS */
+  .textarea, textarea.input { font-size: 1rem; }
+}
+
+/* ---------------------------------------------------------------------
+ * 6. TAB / TABLO — pi lejè, sticky header, mobil-friendly
+ * ------------------------------------------------------------------- */
+.table-wrap { border-radius: var(--radius); border-color: var(--border); box-shadow: var(--shadow); }
+.table th {
+  position: sticky; top: 0; z-index: 2;
+  background: color-mix(in oklab, var(--surface-2) 92%, transparent);
+  backdrop-filter: blur(8px);
+  font-size: .68rem; letter-spacing: .1em;
+  border-bottom: 1px solid var(--border-strong);
+}
+.table td { padding-block: .82rem; }
+.table tbody tr:hover td { background: color-mix(in oklab, var(--primary) 5%, transparent); }
+.table tbody tr:last-child td { border-bottom: none; }
+
+/* ---------------------------------------------------------------------
+ * 7. BADGE / PILL
+ * ------------------------------------------------------------------- */
+.badge {
+  padding: .26rem .65rem; font-size: .68rem; letter-spacing: .06em;
+  border: 1px solid color-mix(in oklab, currentColor 22%, transparent);
+}
+.badge-pill { border-color: var(--border-strong); box-shadow: var(--shadow); backdrop-filter: blur(6px); }
+
+/* ---------------------------------------------------------------------
+ * 8. NAV / TOPBAR — vè fime (glass) modèn
+ * ------------------------------------------------------------------- */
+.nav {
+  background: color-mix(in oklab, var(--surface) 72%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  transition: box-shadow var(--dur) var(--easing), background var(--dur) var(--easing);
+}
+.nav .nav-lnk {
+  position: relative; padding: .35rem .1rem; font-weight: 550;
+}
+.nav .nav-lnk::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -2px; height: 2px;
+  background: var(--grad-accent); border-radius: 2px;
+  transition: right var(--dur) var(--easing);
+}
+.nav .nav-lnk:hover::after { right: 0; }
+
+.topbar {
+  background: color-mix(in oklab, var(--surface) 74%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+}
+
+/* Sidebar — endikatè aktif modèn */
+.side-link { border-radius: var(--radius-sm); font-weight: 550; transition: background var(--dur) var(--easing), color var(--dur) var(--easing), transform 140ms var(--easing); }
+.side-link:hover { transform: translateX(2px); }
+.side-link[aria-current="page"] {
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+  color: var(--primary); font-weight: 650;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+ * 9. LANDING — hero mesh, seksyon pi respirab
+ * ------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  padding: clamp(3rem, 8vw, 6rem) 1.25rem clamp(2.75rem, 6vw, 4.5rem);
+  background: var(--grad-mesh);
+  overflow: clip;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(color-mix(in oklab, var(--primary) 12%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000, transparent 75%);
+  opacity: .35;
+}
+.hero-grid { position: relative; z-index: 1; gap: clamp(2rem, 4vw, 3.5rem); }
+.hero h1 { font-size: clamp(2.15rem, 5vw, 3.55rem); letter-spacing: -.04em; }
+.hero h1 .hl {
+  background: linear-gradient(100deg, var(--brand-blue), var(--brand-lime-d) 92%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p.lead { font-size: clamp(1rem, 1.1vw + .8rem, 1.14rem); max-width: 54ch; }
+.hero-cta { gap: .8rem; margin-top: .4rem; }
+
+.mock {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+  transform: perspective(1400px) rotateX(2.2deg) rotateY(-3.2deg);
+  transition: transform 600ms var(--easing);
+}
+.mock:hover { transform: perspective(1400px) rotateX(0) rotateY(0); }
+.mock-stat { border-radius: 12px; }
+.mock-stat.a { background: var(--grad-brand); }
+.mock-stat.c { background: var(--grad-accent); }
+
+.sect { padding: clamp(3.25rem, 7vw, 5.5rem) 1.25rem; }
+.sect.tint { background: var(--bg-tint); }
+.sect h2 { font-size: clamp(1.65rem, 3.6vw, 2.5rem); letter-spacing: -.035em; }
+.eyebrow { color: var(--primary); letter-spacing: .2em; }
+
+.feat, .value {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--dur) var(--easing), box-shadow var(--dur) var(--easing),
+              border-color var(--dur) var(--easing), background-color var(--dur-card) ease;
+}
+.feat:hover, .value:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+}
+.feat i { font-size: 1.6rem; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.value .sq { border-radius: 14px; background: var(--grad-brand); color: #fff; box-shadow: var(--shadow); }
+
+.plan { border-radius: var(--radius-lg); box-shadow: var(--shadow); transition: transform var(--dur) var(--easing), box-shadow var(--dur) var(--easing); }
+.plan:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.plan.featured {
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 8%, var(--surface)), var(--surface) 42%);
+}
+.plan .price { font-size: clamp(1.9rem, 3vw, 2.3rem); letter-spacing: -.04em; }
+
+.faq details { border-radius: var(--radius); box-shadow: var(--shadow); }
+.faq details[open] { border-color: color-mix(in oklab, var(--primary) 32%, var(--border)); }
+.faq summary { padding-right: 1.6rem; }
+.faq summary::after { transition: transform var(--dur) var(--easing); }
+.faq details[open] summary::after { transform: rotate(180deg); }
+
+.footer { background: var(--surface); border-top: 1px solid var(--border); }
+.socials a { transition: transform var(--dur) var(--spring), background-color var(--dur) var(--easing), color var(--dur) var(--easing); }
+.socials a:hover { transform: translateY(-3px); background: var(--grad-brand); color: #fff; border-color: transparent; }
+
+/* ---------------------------------------------------------------------
+ * 10. AUTH — kat sant, pi kontanporen
+ * ------------------------------------------------------------------- */
+.auth-shell { background: var(--grad-mesh), var(--bg); }
+.auth-card, .auth-box, .auth-panel {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+  background: color-mix(in oklab, var(--surface) 94%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+/* ---------------------------------------------------------------------
+ * 11. MODAL / TOAST — pi dou
+ * ------------------------------------------------------------------- */
+.modal, .modal-card, .sheet, .dialog {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg);
+}
+.modal-backdrop, .backdrop, .overlay {
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+}
+.toast, .notice, .snackbar { border-radius: var(--radius) !important; box-shadow: var(--shadow-md); }
+
+@keyframes v10-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+.modal, .modal-card, .toast, .dialog { animation: v10-in 260ms var(--easing) both; }
+
+/* ---------------------------------------------------------------------
+ * 12. SKELETON / LOADING
+ * ------------------------------------------------------------------- */
+.skeleton, .sk, .mock-lines span {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 37%, var(--surface-2) 63%);
+  background-size: 400% 100%;
+  animation: v10-shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+@keyframes v10-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+/* ---------------------------------------------------------------------
+ * 13. ERGONOMI MOBIL — safe-area, espas pi konfòtab
+ * ------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .card { padding: 1.15rem; border-radius: var(--radius); }
+  .sect { padding-inline: 1.05rem; }
+  .table th, .table td { padding-inline: .8rem; }
+}
+body { padding-bottom: env(safe-area-inset-bottom); }
+.topbar, .nav { padding-top: max(0px, env(safe-area-inset-top)); }
+
+/* Anpeche debòdman orizontal sou mobil */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+
+/* ---------------------------------------------------------------------
+ * 14. A11Y — respekte prefere-mouvman-redwi
+ * ------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mock { transform: none; }
+}
+html { scroll-behavior: smooth; }
+
+/* =====================================================================
+ * V10 — KONPOZAN NOUVO YO (sou-meni ankre, opt-in imèl, èd «?», operatè)
+ * ===================================================================== */
+
+/* --- Sou-meni ankre nan paj «Konpayi mwen» (PATI B) --- */
+.sec-nav{
+  position:sticky; top:calc(var(--header-h, 62px) + .25rem); z-index:5;
+  display:flex; gap:.4rem; overflow-x:auto; padding:.5rem;
+  margin:0 0 1rem; border-radius:var(--radius-lg, 14px);
+  background:color-mix(in oklab, var(--surface) 78%, transparent);
+  backdrop-filter:blur(14px) saturate(1.4);
+  border:1px solid var(--border);
+  scrollbar-width:none;
+}
+.sec-nav::-webkit-scrollbar{ display:none; }
+.sec-tab{
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:.45rem;
+  padding:.55rem .9rem; border-radius:999px; font-size:.85rem; font-weight:600;
+  color:var(--muted); text-decoration:none; white-space:nowrap;
+  transition:background .18s ease, color .18s ease, transform .18s ease;
+}
+.sec-tab:hover{ background:var(--surface-2); color:var(--fg); }
+.sec-tab.is-active{ background:var(--primary); color:var(--primary-fg); box-shadow:var(--shadow-sm); }
+.sec-block{ scroll-margin-top:calc(var(--header-h, 62px) + 4rem); margin-bottom:2.25rem; }
+.sec-title{
+  display:flex; align-items:center; gap:.55rem; font-size:1rem; font-weight:700;
+  margin:0 0 .75rem; padding-bottom:.5rem; border-bottom:1px dashed var(--border);
+}
+.sec-title i{ color:var(--primary); }
+
+/* --- Aktivasyon notifikasyon imèl (PATI H.3) --- */
+.optin-steps{ margin-top:1rem; border-top:1px dashed var(--border); padding-top:1rem; }
+.optin-ol{ margin:0; padding-left:1.25rem; display:grid; gap:1.25rem; }
+.optin-ol > li{ line-height:1.6; }
+.optin-ol > li::marker{ color:var(--primary); font-weight:700; }
+.rule-list{ margin:0; padding-left:1.1rem; display:grid; gap:.4rem; line-height:1.55; }
+
+/* --- Bouton èd «?» + ti popup --- */
+.help-dot{
+  width:1.15rem; height:1.15rem; margin-left:.4rem; border:0; cursor:pointer;
+  border-radius:999px; font-size:.7rem; font-weight:800; line-height:1;
+  background:var(--primary-soft, var(--surface-2)); color:var(--primary);
+}
+.help-dot:hover{ filter:brightness(1.08); }
+.help-pop{
+  position:fixed; inset:0; z-index:80; display:grid; place-items:center;
+  background:color-mix(in oklab, #000 45%, transparent); backdrop-filter:blur(3px);
+}
+.help-pop .help-in{
+  max-width:min(30rem, 92vw); padding:1.25rem; border-radius:var(--radius-lg, 14px);
+  background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow-lg);
+}
+.help-pop p{ margin:0 0 1rem; line-height:1.6; color:var(--fg); font-size:.9rem; }
+
+/* --- Kat operatè peman --- */
+.op-grid{ display:grid; gap:.85rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); }
+.op-card{
+  padding:1rem; border-radius:var(--radius-md, 12px);
+  border:1px solid var(--border); background:var(--surface-2);
+}
+.op-name{ font-weight:700; margin-bottom:.2rem; }
+.op-acc{ font-size:1.05rem; color:var(--primary); }
+.muted.sm{ font-size:.8rem; }
+.ta-r{ text-align:right; }
+.modal-body{ text-align:left; max-height:60vh; overflow:auto; padding:.25rem; }
+
+/* --- POS: chan nimewo a san klavye vityèl (PATI K.3) --- */
+.pos-num{
+  font-size:clamp(1.6rem, 6vw, 2.2rem); text-align:center; letter-spacing:.12em;
+  padding:.75rem; font-weight:700;
+}

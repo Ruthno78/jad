@@ -1,0 +1,168 @@
+/* =====================================================================
+ * JADSTACK LOTTO V35 — TI REFONT FRONT-END (kouch final)
+ * Objektif: pi modèn, pi pwòp, san chanje estrikti HTML.
+ * • Tipografi pi klè, espasman pi laj
+ * • Kat (card) ak lonbraj dou + bòdi fin
+ * • Bouton ak animasyon dou
+ * • Hero ak yon degrade dou nan koulè mak la
+ * • Seleksyonè lang pi poli
+ * TOUT koulè soti nan varyab tokens.css — zewo koulè hardcode nouvo.
+ * ===================================================================== */
+
+:root {
+  --v35-ring: color-mix(in srgb, var(--primary) 30%, transparent);
+  --v35-shadow-1: 0 1px 2px rgba(10, 46, 68, .06), 0 6px 18px rgba(10, 46, 68, .06);
+  --v35-shadow-2: 0 2px 6px rgba(10, 46, 68, .08), 0 18px 40px rgba(10, 46, 68, .10);
+  --v35-gap: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: .1px;
+}
+
+h1, h2, h3 { letter-spacing: -.35px; }
+h1 { line-height: 1.12; }
+
+/* ---------- Nav ---------- */
+.nav {
+  backdrop-filter: saturate(160%) blur(10px);
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+.nav-lnk { position: relative; transition: color .18s ease; }
+.nav-lnk::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: -6px; height: 2px;
+  background: var(--accent); border-radius: 2px; transition: right .22s ease;
+}
+.nav-lnk:hover::after { right: 0; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(1100px 420px at 12% -10%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%),
+    radial-gradient(760px 360px at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 72%);
+}
+.hero-grid { gap: var(--v35-gap); }
+.hero .lead { max-width: 56ch; }
+.badge-pill {
+  border: 1px solid color-mix(in srgb, var(--primary) 26%, transparent);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  box-shadow: var(--v35-shadow-1);
+}
+.hero .hl {
+  background: linear-gradient(92deg, var(--primary), color-mix(in srgb, var(--accent) 70%, var(--primary)));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Kat / seksyon ---------- */
+.card, .feat, .value, .plan, details, .mock {
+  border-radius: calc(var(--radius, 14px) + 2px);
+  box-shadow: var(--v35-shadow-1);
+  border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.feat:hover, .value:hover, .plan:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--v35-shadow-2);
+  border-color: color-mix(in srgb, var(--primary) 26%, transparent);
+}
+.card-hd { border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent); }
+
+/* ---------- Bouton ---------- */
+.btn {
+  transition: transform .16s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+  border-radius: calc(var(--radius, 14px) - 3px);
+}
+.btn:active { transform: translateY(1px) scale(.995); }
+.btn-primary { box-shadow: 0 6px 16px color-mix(in srgb, var(--primary) 26%, transparent); }
+.btn-primary:hover { box-shadow: 0 10px 22px color-mix(in srgb, var(--primary) 32%, transparent); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none; box-shadow: 0 0 0 3px var(--v35-ring);
+}
+
+/* ---------- Fòm ---------- */
+.input, input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], input[type="date"], select, textarea {
+  border-radius: calc(var(--radius, 14px) - 4px);
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.label { letter-spacing: .2px; }
+
+/* ---------- Tablo ---------- */
+table { border-collapse: separate; border-spacing: 0; }
+thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  backdrop-filter: blur(6px);
+}
+tbody tr { transition: background-color .14s ease; }
+tbody tr:hover { background: color-mix(in srgb, var(--primary) 5%, transparent); }
+
+/* ---------- Otantifikasyon (auth.html) ---------- */
+.auth-card, .auth-box {
+  box-shadow: var(--v35-shadow-2);
+  border-radius: calc(var(--radius, 14px) + 4px);
+}
+body.auth, .auth-wrap {
+  background:
+    radial-gradient(900px 380px at 50% -8%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 72%),
+    var(--bg);
+}
+
+/* ---------- Seleksyonè lang (v30) ---------- */
+.v30-lang-btn {
+  border-radius: 999px;
+  transition: background-color .18s ease, box-shadow .18s ease;
+}
+.v30-lang-btn:hover { box-shadow: 0 0 0 3px var(--v35-ring); }
+.v30-lang-menu {
+  border-radius: 14px;
+  box-shadow: var(--v35-shadow-2);
+  overflow: hidden;
+  animation: v35-pop .16s ease;
+}
+@keyframes v35-pop { from { opacity: 0; transform: translateY(-4px) } to { opacity: 1; transform: none } }
+
+/* ---------- Detay / FAQ ---------- */
+details { padding: .9rem 1.1rem; }
+details summary { cursor: pointer; font-weight: 600; }
+details[open] { border-color: color-mix(in srgb, var(--primary) 28%, transparent); }
+
+/* ---------- Aksesibilite: respekte "reduced motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 640px) {
+  .hero { padding-top: 1.25rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+  .nav-inner { gap: .4rem; }
+}
+
+/* ---------- V35: pozisyon seleksyonè lang nan nav la ---------- */
+.v30-lang { position: relative; }
+.v30-lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  min-width: 168px;
+  z-index: 60;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: .35rem;
+}
+.v30-lang-menu[hidden] { display: none; }
+.v30-lang-opt {
+  display: flex; width: 100%; align-items: center; gap: .5rem;
+  padding: .5rem .6rem; border: 0; border-radius: 9px;
+  background: transparent; color: var(--text); cursor: pointer; text-align: left;
+}
+.v30-lang-opt:hover { background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.v30-lang-opt.is-on { background: color-mix(in srgb, var(--primary) 12%, transparent); font-weight: 600; }
+[data-v30-lang-place="footer"] .v30-lang-menu { bottom: calc(100% + 8px); top: auto; }

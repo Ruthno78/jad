@@ -1,0 +1,6 @@
+<resources>
+    <color name="brand_bg">#0B1220</color>
+    <color name="brand_primary">#0EA5E9</color>
+    <color name="brand_accent">#F59E0B</color>
+    <color name="white">#FFFFFF</color>
+</resources>

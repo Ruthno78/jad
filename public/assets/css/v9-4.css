@@ -1,0 +1,109 @@
+/* =====================================================================
+ * JADSTACK LOTTO — STIL V9.4
+ * Badj meni · lock 5 chif · kat operatè peman.
+ * Tout koulè soti nan tokens.css — pa gen okenn koulè kode an di.
+ * ===================================================================== */
+
+/* ---------- Badj sou antre meni yo ---------- */
+.side-link { position: relative; }
+
+.side-link .badge-count {
+  margin-left: auto;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 .38rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--danger);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--danger) 22%, transparent);
+}
+
+.side-link .badge-dot {
+  margin-left: auto;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 999px;
+  background: var(--danger);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--danger) 20%, transparent);
+  animation: jl-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes jl-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.25); opacity: .75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-link .badge-dot { animation: none; }
+}
+
+/* Lè meni an fèmen (collapsed), badj la kole sou ikòn nan. */
+.shell.collapsed .side-link .badge-count,
+.shell.collapsed .side-link .badge-dot {
+  position: absolute;
+  top: .32rem;
+  right: .32rem;
+  margin: 0;
+}
+.shell.collapsed .side-link .badge-count { min-width: 1.05rem; height: 1.05rem; font-size: .62rem; }
+
+/* ---------- Lock ak kòd 5 chif ---------- */
+.syslock-bar {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding: .65rem .8rem;
+  margin-bottom: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md, .6rem);
+  background: color-mix(in oklab, var(--warning) 8%, transparent);
+}
+.syslock-bar .muted { font-size: .84rem; }
+
+.syslock-code {
+  margin: .35rem auto 1rem;
+  padding: .55rem 1rem;
+  display: inline-block;
+  border-radius: var(--radius-md, .6rem);
+  background: var(--surface-2, var(--card));
+  border: 1px solid var(--border);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: .55rem;
+  text-indent: .55rem;
+  user-select: all;
+}
+
+.modal .input.mono,
+.mono { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+
+/* ---------- Kat operatè peman ---------- */
+.op-grid {
+  display: grid;
+  gap: .85rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  padding: .25rem 0;
+}
+.op-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, .6rem);
+  padding: .9rem 1rem;
+  background: var(--surface-2, var(--card));
+}
+.op-card .op-name { font-weight: 700; margin-bottom: .25rem; }
+.op-card .op-acc {
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  user-select: all;
+}
+.op-card .sm, .sm { font-size: .82rem; }
+
+.modal-lg { max-width: 720px; width: min(720px, 94vw); }

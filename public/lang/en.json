@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Home",
+    "agent": "Agent",
+    "company": "Company",
+    "superadmin": "Super Admin",
+    "employer": "Employer",
+    "contact": "Contact",
+    "legal": "Legal",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "lang": "Language"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "send": "Send",
+    "print": "Print",
+    "total": "Total",
+    "date": "Date",
+    "amount": "Amount",
+    "status": "Status",
+    "loading": "Loading…",
+    "empty": "Nothing to show.",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back"
+  },
+  "err": {
+    "required": "This field is required.",
+    "email": "Invalid email address.",
+    "network": "Connection failed. Try again.",
+    "denied": "You are not allowed to do this.",
+    "generic": "Something went wrong. Try again."
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot your password?",
+    "signin": "Sign in"
+  },
+  "ticket": {
+    "title": "Ticket",
+    "new": "New ticket",
+    "number": "Number",
+    "game": "Game",
+    "draw": "Draw",
+    "toPay": "TOTAL TO PAY",
+    "winner": "Winner",
+    "loser": "Not a winner",
+    "paid": "Paid"
+  },
+  "draw": {
+    "result": "Result",
+    "lot1": "1st prize",
+    "lot2": "2nd prize",
+    "lot3": "3rd prize",
+    "settle": "Settle draw"
+  },
+  "prime": {
+    "title": "Prize settings",
+    "multiplier": "Multiplier",
+    "byPosition": "Multiplier per prize position"
+  },
+  "chat": {
+    "title": "Messages",
+    "placeholder": "Write a message…",
+    "reply": "Reply",
+    "react": "React",
+    "hide": "Hide",
+    "edited": "edited",
+    "verified": "Verified account",
+    "miniVerified": "Mini Super-Admin — verified account",
+    "empty": "No messages yet.",
+    "contacts": "Contacts"
+  },
+  "report": {
+    "title": "Report",
+    "sales": "Sales",
+    "balance": "Balance",
+    "winners": "Winners"
+  },
+  "mg": {
+    "title": "Maryaj GRATIS",
+    "free": "FREE · 0 HTG"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

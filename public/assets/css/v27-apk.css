@@ -1,0 +1,146 @@
+/* =====================================================================
+ * JADSTACK LOTTO — V27 FAZ 4 · Card « Telechaje Aplikasyon POS »
+ * Chaje APRE v26.css. ZEWO nouvo koulè fiks: tout soti nan
+ * --primary / --accent (tokens.css) atravè color-mix().
+ *
+ *  §1 — Card / popup pataje
+ *  §2 — Badge « Nouvo vèsyon » (ti pwen limen, pa gwo blòk)
+ *  §3 — Bouton lansman (lis ajan, siveyans machin)
+ *  §4 — Lyen minimalist footer ajan
+ *  §5 — Panèl konfigirasyon Super Admin
+ * ===================================================================== */
+
+/* --- §1 — CARD / POPUP ---------------------------------------------- */
+.jl27-apk-modal .modal { max-width: 560px; width: min(560px, 94vw); }
+
+.jl27-apk-hd {
+  display: flex; align-items: center; gap: .8rem; margin-bottom: .35rem;
+}
+.jl27-apk-hd .jl27-apk-ico {
+  width: 44px; height: 44px; flex: none;
+  display: grid; place-items: center;
+  border-radius: calc(var(--radius) * .8);
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--primary) 22%, var(--surface)),
+              color-mix(in oklab, var(--accent) 18%, var(--surface)));
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+.jl27-apk-hd h3 { margin: 0; }
+
+.jl27-apk-list { display: grid; gap: .6rem; margin: .9rem 0 .2rem; }
+
+.jl27-apk-item {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .8rem .9rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 16%, var(--border));
+  border-radius: var(--radius);
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--primary) 8%, var(--surface)),
+              var(--surface) 75%);
+  transition: transform var(--dur) var(--easing), box-shadow var(--dur) var(--easing);
+}
+.jl27-apk-item:nth-child(2n) {
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--accent) 12%, var(--surface)),
+              var(--surface) 75%);
+}
+.jl27-apk-item:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.jl27-apk-item .jl27-apk-plat { font-weight: 700; display: flex; align-items: center; gap: .45rem; }
+.jl27-apk-item .jl27-apk-meta { flex: 1; min-width: 0; }
+.jl27-apk-item .jl27-apk-desc {
+  font-size: .82rem; color: var(--muted-fg, var(--text-muted, inherit));
+  opacity: .8; margin-top: .15rem;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.jl27-apk-item .jl27-apk-acts { display: flex; gap: .35rem; flex: none; }
+
+.jl27-apk-empty {
+  padding: 1.1rem; text-align: center; opacity: .75; font-size: .9rem;
+  border: 1px dashed color-mix(in oklab, var(--primary) 28%, var(--border));
+  border-radius: var(--radius);
+}
+
+/* --- RESPONSIVE (te manke nèt nan fichye sa a — okenn @media pa t
+   egziste, kontrèman ak rès sistèm nan v11.css/v26.css). Sou yon telefòn
+   etwat, ranje ikòn+tèks+bouton "Telechaje" a te ka depase lajè ekran an
+   paske .jl27-apk-item se yon sèl liy flex san pwen kraze. --- */
+@media (max-width: 480px) {
+  .jl27-apk-modal .modal { padding: .9rem; }
+  .jl27-apk-item {
+    flex-wrap: wrap;
+    padding: .7rem .75rem;
+  }
+  .jl27-apk-item .jl27-apk-meta { min-width: 0; flex-basis: 100%; }
+  .jl27-apk-item .jl27-apk-desc { white-space: normal; }
+  .jl27-apk-item .jl27-apk-acts { flex-basis: 100%; justify-content: flex-end; }
+  .jl27-apk-hd { align-items: flex-start; }
+  .jl27-apk-ft { flex-direction: column; align-items: stretch; text-align: center; }
+}
+
+/* Footer popup — lyen download dirèk */
+.jl27-apk-ft {
+  margin-top: .9rem; padding-top: .7rem;
+  border-top: 1px solid color-mix(in oklab, var(--primary) 14%, var(--border));
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .5rem;
+}
+.jl27-apk-ft .jl27-apk-dl {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-weight: 600; text-decoration: none;
+  color: var(--primary);
+}
+.jl27-apk-ft .jl27-apk-dl:hover { color: var(--accent); }
+
+/* --- §2 — BADGE « Nouvo vèsyon » (ti pwen limen) --------------------- */
+.jl27-dot {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .01em;
+  color: color-mix(in oklab, var(--accent) 78%, var(--text, currentColor));
+}
+.jl27-dot::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); flex: none;
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 55%, transparent);
+  animation: jl27-pulse 1.9s var(--easing, ease-out) infinite;
+}
+@keyframes jl27-pulse {
+  0%   { box-shadow: 0 0 0 0   color-mix(in oklab, var(--accent) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 7px color-mix(in oklab, var(--accent) 0%,  transparent); }
+  100% { box-shadow: 0 0 0 0   color-mix(in oklab, var(--accent) 0%,  transparent); }
+}
+@media (prefers-reduced-motion: reduce) { .jl27-dot::before { animation: none; } }
+
+/* --- §3 — BOUTON LANSMAN -------------------------------------------- */
+.jl27-apk-launch { display: flex; justify-content: center; margin: 1.1rem 0 .3rem; }
+.jl27-apk-launch .btn { display: inline-flex; align-items: center; gap: .5rem; }
+/* Paj Siveyans machin — byen ekate ak rès la */
+.jl27-apk-launch.is-spaced { margin: 2rem 0 1.2rem; }
+
+/* --- §4 — LYEN MINIMALIST FOOTER AJAN -------------------------------- */
+[data-role="agent"] .jl27-ajan-applink {
+  display: flex; align-items: center; justify-content: center;
+  gap: .4rem; flex-wrap: wrap;
+  padding: .5rem .8rem calc(.5rem + env(safe-area-inset-bottom, 0px));
+  font-size: .78rem; opacity: .72;
+}
+[data-role="agent"] .jl27-ajan-applink a {
+  color: var(--primary); text-decoration: none; font-weight: 600;
+}
+[data-role="agent"] .jl27-ajan-applink a:hover { color: var(--accent); }
+
+/* --- §5 — PANÈL KONFIG SUPER ADMIN ---------------------------------- */
+.jl27-cfg-row {
+  display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+  padding: .8rem .9rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 14%, var(--border));
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--primary) 5%, var(--surface));
+  margin-bottom: .55rem;
+}
+.jl27-cfg-row .jl27-cfg-main { flex: 1; min-width: 220px; }
+.jl27-cfg-row .jl27-cfg-url {
+  font-size: .76rem; opacity: .7; word-break: break-all;
+}
+.jl27-cfg-row .jl27-cfg-acts { display: flex; gap: .35rem; flex-wrap: wrap; }
+.jl27-cfg-off { opacity: .55; }
