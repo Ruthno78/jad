@@ -35,6 +35,36 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pushBridge: AndroidPush
     private var pendingRedirect: String? = null
 
+    // Dènye URL "reyèl" (http/https) WebView a t'ap eseye chaje.
+    // Sa a se sa n'ap rechaje si koneksyon an tonbe epi retounen, olye de yon
+    // domèn fiks ki ta ka mennen nan yon lòt paj (san logo/kontni reyèl la).
+    private var lastRealUrl: String = ""
+
+    // Kòd erè ki VRÈMAN vle di "pa gen entènèt / sèvè pa reponn".
+    // Nou pa mete offline.html pou erè ki pa gen rapò ak rezo a
+    // (tel:, mailto:, intent://, schèm apèl natif, elatriye) paske sa
+    // yo ka rive menm lè entènèt ap mache byen e yo pa ta dwe bloke app la.
+    private val networkErrorCodes = setOf(
+        WebViewClient.ERROR_HOST_LOOKUP,
+        WebViewClient.ERROR_CONNECT,
+        WebViewClient.ERROR_TIMEOUT,
+        WebViewClient.ERROR_IO,
+        WebViewClient.ERROR_UNKNOWN,
+        WebViewClient.ERROR_FAILED_SSL_HANDSHAKE
+    )
+
+    // Bridge JS ki pèmèt paj "pa gen entènèt" la (offline.html) mande app la
+    // rechaje VRE paj sit la t'ap eseye chaje a, olye de yon adrès fiks.
+    inner class NativeBridge {
+        @android.webkit.JavascriptInterface
+        fun retry() {
+            runOnUiThread {
+                val target = if (lastRealUrl.isNotBlank()) lastRealUrl else getString(R.string.site_url)
+                b.webView.loadUrl(target)
+            }
+        }
+    }
+
     private val fileChooser =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val uris = WebChromeClient.FileChooserParams.parseResult(result.resultCode, result.data)
@@ -88,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         b.webView.addJavascriptInterface(printerBridge, "AndroidPrinter")
         b.webView.addJavascriptInterface(biometricBridge, "JadStackBiometric")
         b.webView.addJavascriptInterface(pushBridge, "AndroidPush")
+        b.webView.addJavascriptInterface(NativeBridge(), "NativeBridge")
         CookieManager.getInstance().setAcceptThirdPartyCookies(b.webView, true)
         b.webView.overScrollMode = WebView.OVER_SCROLL_IF_CONTENT_SCROLLS
 
@@ -108,8 +139,24 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            override fun onPageStarted(view: WebView, url: String, favicon: android.graphics.Bitmap?) {
+                // Konsève dènye URL http/https "reyèl" la (pa offline.html la)
+                // pou nou ka retounen sou li si koneksyon an tounen.
+                if (url.startsWith("http://") || url.startsWith("https://")) {
+                    lastRealUrl = url
+                }
+            }
+
             override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
-                if (request.isForMainFrame) view.loadUrl("file:///android_asset/offline.html")
+                val scheme = request.url.scheme
+                val isHttpNavigation = scheme == "http" || scheme == "https"
+                // Sèlman montre paj "pa gen entènèt" la lè:
+                // 1) se paj prensipal la (pa yon ti resous/iframe)
+                // 2) se yon vrè URL http/https (pa tel:, mailto:, intent:, elatriye)
+                // 3) kòd erè a se yon vrè erè rezo
+                if (request.isForMainFrame && isHttpNavigation && error.errorCode in networkErrorCodes) {
+                    view.loadUrl("file:///android_asset/offline.html")
+                }
             }
 
             override fun onPageFinished(view: WebView, url: String) {

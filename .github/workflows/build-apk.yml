@@ -1,4 +1,4 @@
-name: RTN - Build Android APK
+name: RHTN - Build Android APK
 
 on:
   workflow_dispatch:
