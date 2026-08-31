@@ -1,9 +1,0 @@
-<resources>
-    <style name="Theme.JadStackLotto" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/brand_primary</item>
-        <item name="colorSecondary">@color/brand_accent</item>
-        <item name="android:statusBarColor">@color/brand_bg</item>
-        <item name="android:navigationBarColor">@color/brand_bg</item>
-        <item name="android:windowBackground">@color/brand_bg</item>
-    </style>
-</resources>
