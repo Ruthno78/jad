@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">JadStack Lotto</string>
-    <string name="site_url">https://jadstacklotto.com/auth.html</string>
+    <string name="site_url">/public/auth.html</string>
     <string name="site_host">jadstacklotto.com</string>
     <string name="download_dir">JadStackLotto</string>
     <string name="download_started">Telechajman kòmanse…</string>

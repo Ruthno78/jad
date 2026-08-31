@@ -6,7 +6,7 @@
         </trust-anchors>
     </base-config>
     <domain-config cleartextTrafficPermitted="false">
-        <domain includeSubdomains="true">jadstacklotto.com</domain>
+        <domain includeSubdomains="true">/public/auth.html</domain>
         <domain includeSubdomains="true">supabase.co</domain>
     </domain-config>
 </network-security-config>
