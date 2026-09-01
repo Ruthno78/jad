@@ -40,5 +40,5 @@ Super Admin and Mini Super Admin accounts can be gated by the Android OS
 biometric authenticator. No face image or biometric template is stored by
 the app.
 
-## Dev
-devloper by Ruthno Dev and jadbony 
+## dev
+Ruthno dev & Jadbony dev  © jadstacklotto tout les dois les sont réservés 
